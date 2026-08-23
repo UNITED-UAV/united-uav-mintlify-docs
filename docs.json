@@ -8,6 +8,12 @@
     "light": "#D81B60",
     "dark": "#7A003D"
   },
+  "redirects": [
+    {
+      "source": "/quickstart",
+      "destination": "/"
+    }
+  ],
   "navigation": {
     "pages": [
       {
