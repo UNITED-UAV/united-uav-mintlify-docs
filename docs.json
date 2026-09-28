@@ -29,7 +29,8 @@
           "product-guides/dji-agras-t40-middle-frame-parts-identification",
           "product-guides/dji-agras-t30-plunger-pump-parts-service-triage",
           "product-guides/dji-agras-t100-frame-connector-structural-inspection",
-          "product-guides/t-motor-flame-70a-6s-esc-integration-validation"
+          "product-guides/t-motor-flame-70a-6s-esc-integration-validation",
+          "product-guides/t-motor-vl8020-kv170-vtol-propulsion-integration"
         ]
       }
     ],

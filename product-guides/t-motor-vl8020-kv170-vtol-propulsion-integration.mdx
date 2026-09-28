@@ -1,0 +1,246 @@
+---
+title: "T-MOTOR VL8020 KV170 for VTOL: Propulsion Sizing, Bench-Data Interpretation, and Qualification"
+description: "An engineering guide to integrating the T-MOTOR VL8020 KV170 motor into a VTOL aircraft, including source control, thrust and power analysis, battery and ESC sizing, propeller-locking integration, thermal testing, commissioning, and fault diagnosis."
+sidebarTitle: "VL8020 KV170 VTOL Motor"
+---
+
+Selecting a motor for a vertical-takeoff-and-landing aircraft is not a matter of comparing maximum thrust with gross mass. The propulsion unit must lift the aircraft with controllable reserve, survive the required duty cycle, operate from the real loaded battery voltage, remain thermally stable in hover and transition, and interact correctly with the flight controller, electronic speed controller, propeller, airframe, and power-distribution system. A maximum-thrust line from a static bench test answers only one narrow question.
+
+This guide applies that systems approach to the [UNITED UAV T-MOTOR VL8020 KV170 VTOL Propulsion Motor](https://store.uniteduav.com/products/vl8020-kv170?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_vl8020_kv170_guide_20260928). It is intended for aircraft designers, propulsion integrators, maintenance teams, and technical buyers who need to turn the public data into a defensible selection and qualification plan. It is not an aircraft approval, a substitute for the current manufacturer documentation, or permission to operate at a published maximum.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/UNITED-UAV-tmotor-vl8020-high-thrust-motor-for-vtol-uavs-main-01.webp?v=1790247246" alt="UNITED UAV T-MOTOR VL8020 KV170 motor for professional VTOL propulsion integration" />
+
+## Control the configuration before doing any sizing
+
+The UNITED UAV listing is for the VL8020 KV170 motor and exposes separate CW and CCW order variants. T-MOTOR's performance data, however, describe a tested propulsion combination: the VL8020 KV170 motor, V150A ESC, and VZ28 propeller. The component listing and the tested system are related, but they are not interchangeable records. Buying the motor does not mean that the matching ESC, propeller, encoder harness, locking function, or integration hardware is included.
+
+As reviewed on 28 September 2026, the public sources support the following baseline:
+
+| Controlled item | Publicly supported value | Engineering consequence |
+| --- | --- | --- |
+| Motor | VL8020, KV170, 24N28P | Do not substitute data from another winding or VL frame size |
+| Motor supply | 12S recommendation | Qualify with the actual chemistry and maximum charged voltage, not nominal voltage alone |
+| Motor current boundary | 116 A maximum | Treat as a boundary; it is not a continuous target |
+| Motor physical data | 88.8 mm diameter, 45.5 mm axial dimension, 735 g including wires | Include motor mass, mounting geometry, clearance, and inertia in the airframe design |
+| Motor environment | IPX5; published ambient range from -30 to 55 degrees Celsius | The claim applies to the documented motor, not automatically to connectors, ESC, splices, or the aircraft |
+| Matching controller | V150A, PWM or CAN control, DRONECAN/UAVCAN protocol, electronic propeller locking | Obtain the applicable manual, firmware, wiring, and CAN configuration before integration |
+| V150A electrical limits | 60 V maximum, 70 A continuous under stated heat-dissipation conditions, 160 A for 10 seconds under stated heat-dissipation conditions | Mission current and thermal duration must be evaluated together |
+| Matching propeller | VZ28, approximately 711.2 mm diameter; the store page identifies it as 28 x 10.8 inches | Bench results are not transferable to an arbitrary 28-inch propeller |
+| Tested maximum at the higher-voltage table | 19.679 kgf, 115.38 A, 5,496 W, 5,122 rpm | This point nearly reaches the motor's 116 A boundary and is not a design reserve |
+| Manufacturer application reference | 35 kg recommended takeoff mass for a four-arm VTOL | It is a configuration reference, not a universal payload or airworthiness rating |
+
+Create a propulsion configuration identifier that binds the motor model, winding, direction variant, propeller model and revision, ESC model and firmware, battery chemistry and cell count, control mode, aircraft position, and drawing revision. Store photographs of the received labels and connectors with that record. If any replacement changes one of those fields, reopen the affected qualification evidence instead of assuming equivalence.
+
+The CW and CCW store variants have different SKUs: `TM-VL8020-KV170` and `TM-VL8020-KV170-CCW`. The current public manufacturer information does not establish exactly which physical parts differ between these commercial variants. Brushless motor direction can often be changed electrically, but that general principle does not prove that hubs, locking geometry, retention hardware, propeller adapters, or supplied hardware are identical. Confirm the ordered direction, compatible propeller, retention arrangement, and electronic locking behavior in writing before release.
+
+## Resolve the voltage and power-document inconsistency
+
+Source control matters because the public pages are not perfectly aligned. T-MOTOR specifies a 12S recommendation and the seven-page VL8020 propulsion-system specification also states 12S. Its two test tables begin near 44.4 V and 49.88 V, which are consistent with a nominal and near-fully-charged 12S lithium-polymer test. The English store table nevertheless labels the test combination with “V150A 14S.” That label should not be interpreted as permission to operate the motor on 14S. The received hardware, current manual, and written manufacturer guidance must control the approved cell count.
+
+There is also a public power-value mismatch. The English T-MOTOR product page lists 1,760 W for a 180-second continuous-power field, while the Chinese page has shown 1,395 W in the corresponding field. The bench table itself contains 1,395 W at the 56-percent command point of the higher-voltage run, but it also contains substantially higher powers at later points. These records do not justify choosing the larger number as a general continuous rating or treating any table row as an unrestricted duration.
+
+Use the following disposition:
+
+1. Obtain the current specification and manual for the exact motor and controller revision.
+2. Ask T-MOTOR or the supplier to resolve the rated cell count and 180-second power value in writing.
+3. Keep the public bench table as performance evidence for the documented motor-ESC-propeller combination, not as a substitute for a thermal duty-cycle limit.
+4. Until the discrepancy is resolved, design preliminary sustained-load tests around the lower defensible power and current envelope.
+5. Release the aircraft only after the installed system passes a mission-representative thermal test with defined acceptance limits.
+
+This is not administrative caution. A motor can remain below its maximum current yet exceed an allowable winding, bearing, magnet, connector, or controller temperature because the exposure lasts too long or cooling is poorer than the manufacturer's setup.
+
+## Read the bench data as a curve, not a headline
+
+The official data contain two static runs at 25 degrees Celsius using the VL8020 KV170, V150A, and VZ28. The lower-voltage run starts at 44.40 V and falls to 42.11 V at maximum command. The higher-voltage run starts at 49.88 V and falls to 47.64 V. Representative points are:
+
+| Test condition | Command | Loaded voltage | Current | Electrical power | Speed | Static thrust | Efficiency |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Lower-voltage table | 40% | 44.40 V | 8.87 A | 394 W | 2,357 rpm | 3.783 kgf | 9.61 g/W |
+| Lower-voltage table | 60% | 44.02 V | 28.14 A | 1,239 W | 3,454 rpm | 8.469 kgf | 6.84 g/W |
+| Lower-voltage table | 80% | 43.28 V | 61.99 A | 2,683 W | 4,361 rpm | 13.892 kgf | 5.18 g/W |
+| Lower-voltage table | 100% | 42.11 V | 109.61 A | 4,616 W | 4,964 rpm | 18.321 kgf | 3.97 g/W |
+| Higher-voltage table | 40% | 49.88 V | 10.82 A | 540 W | 2,629 rpm | 4.756 kgf | 8.81 g/W |
+| Higher-voltage table | 60% | 49.44 V | 34.19 A | 1,690 W | 3,807 rpm | 10.431 kgf | 6.17 g/W |
+| Higher-voltage table | 80% | 48.61 V | 73.08 A | 3,553 W | 4,712 rpm | 16.375 kgf | 4.61 g/W |
+| Higher-voltage table | 100% | 47.64 V | 115.38 A | 5,496 W | 5,122 rpm | 19.679 kgf | 3.58 g/W |
+
+Three conclusions follow immediately. First, command percentage is not proportional to thrust, current, or power. A flight-control output of 80 percent is not “80 percent of the electrical rating.” Second, propulsive efficiency in grams per watt declines as the system moves toward maximum thrust. Reserve obtained only by operating near the top of the curve carries a disproportionate electrical and thermal cost. Third, supply voltage changes the result. The same command produces different rpm, thrust, current, and power as the battery voltage changes.
+
+At the maximum point in the higher-voltage table, current is only 0.62 A below the motor's published 116 A maximum. That is approximately half of one percent, far too little to call an engineering margin once sensor error, unit variation, temperature, propeller tolerance, air density, and dynamic inflow are considered. The fact that the matching ESC has a 160 A ten-second statement does not make the motor a 160 A load. The most restrictive verified component and duration govern the system.
+
+The observed bus change also matters. The lower-voltage run falls by about 5.2 percent from its first listed voltage to its maximum-load voltage; the higher-voltage run falls by about 4.5 percent. Those values belong to the published test setup and are not a battery specification, but they demonstrate why thrust predictions must use loaded voltage at the ESC. A battery selected only from open-circuit voltage can underperform once cell resistance, main leads, connectors, protection devices, and the distribution board are carrying full-aircraft current.
+
+## Translate the 35 kg four-arm reference into an operating point
+
+For a symmetric four-arm aircraft at 35 kg takeoff mass, ideal static hover requires 8.75 kgf per arm before allowing for control activity, center-of-gravity offset, aerodynamic interaction, gusts, climb, transition, or a degraded unit. Linear interpolation between adjacent manufacturer test rows provides a useful planning estimate, though it is not a replacement for a full nonlinear model or an installed-aircraft test.
+
+In the lower-voltage table, 8.75 kgf lies between the 60-percent and 62-percent rows. Interpolation gives approximately 61 percent command, 29.6 A, 1.30 kW, and 3,506 rpm per arm. Four equal arms would therefore require roughly 118 A and 5.2 kW at the propulsion inputs. In the higher-voltage table, the same thrust lies between the 54-percent and 56-percent rows, giving approximately 54.6 percent command, 26.1 A, 1.30 kW, and 3,505 rpm per arm. The similar shaft operating point is reached with lower current at higher voltage.
+
+These are static, equal-share estimates. Real aircraft rarely share load perfectly. A displaced center of gravity can force one pair of rotors to carry more thrust. Roll and pitch corrections continuously redistribute load. Transition introduces wing, rotor, and fuselage interference. Ground effect can make an early hover test look better than out-of-ground-effect operation. Hot weather and altitude reduce density, while contamination or propeller damage changes the load. The power system must support the worst credible combination, not only the arithmetic average.
+
+At the higher-voltage maximum, four arms could theoretically produce about 78.7 kgf of static thrust, approximately 2.25 times the 35 kg reference mass. At the lower-voltage maximum, the equivalent ratio is about 2.09. Neither ratio is a guaranteed aircraft thrust-to-weight ratio. It excludes installation losses, aerodynamic interaction, voltage behavior of the real battery, manufacturing tolerance, and dynamic flight conditions, and it places every motor close to a published electrical boundary. Use the manufacturer’s 35 kg statement as a starting point for architecture, then establish the required control and contingency reserve from the aircraft's safety analysis.
+
+## Size the battery, distribution system, and controller together
+
+The battery must be qualified against total aircraft demand. For the 35 kg example, an estimated 118 A total at lower loaded voltage may be a normal hover point. Four motors at the lower-voltage maximum would draw approximately 438 A; the higher-voltage maximum would approach 462 A. These are arithmetic combinations of static bench rows, not recommended operating points. They illustrate the scale of the bus, connector, fuse, contactor, anti-spark, and distribution problem.
+
+Build a mission load timeline rather than specifying one current:
+
+- power-up and controller initialization;
+- spool-up and ground idle;
+- takeoff and vertical climb;
+- hover stabilization and gust response;
+- transition to wing-borne flight;
+- propeller-locking engagement and locked cruise;
+- unlock, restart, and transition back to hover;
+- vertical landing, rejected landing, and go-around;
+- credible contingency maneuvers defined by the aircraft safety case.
+
+For every segment, record per-arm current, total current, duration, repetition rate, minimum bus voltage, controller and motor temperatures, and required reserve. Apply battery aging and cold-temperature effects. The pack must not cross flight-controller, ESC, or contactor undervoltage thresholds during a transient. Conversely, the fully charged pack, regenerative or commutation transients, and wiring inductance must not exceed the verified voltage capability.
+
+The V150A specification states 70 A continuous under certain heat-dissipation conditions. In the higher-voltage table, the 80-percent row already reaches 73.08 A; in the lower-voltage table, current crosses 70 A between the 80-percent and 90-percent rows. This does not define a universal throttle limit because airflow, command mapping, propeller load, and voltage differ, but it shows that the full upper part of the thrust curve cannot be treated as continuous merely because the ESC name contains “150A.”
+
+Measure voltage at the controller input, not only at the pack. Instrument the main connector, distribution board, branch conductors, and phase connections for temperature rise. A small resistance becomes important at hundreds of amperes: it consumes voltage, produces heat, and can create channel imbalance. Do not extend battery leads, add capacitors, change phase-lead length, or alter connector types without an approved electrical design and manufacturer guidance.
+
+## Account for propeller speed, clearance, and retained energy
+
+The VZ28 diameter is approximately 0.7112 m. At the published 5,122 rpm maximum, the calculated rotational tip speed is about 191 m/s before adding aircraft forward velocity. At standard near-sea-level acoustic conditions, that is roughly Mach 0.55 as a rotational component. In forward flight, the advancing blade experiences a higher helical relative velocity. This estimate is not a propeller structural rating, but it shows why the exact propeller, balance, retention hardware, overspeed logic, and flight envelope matter.
+
+Provide clearance for blade deflection, airframe movement, and maintenance error, not only the static drawing radius. Evaluate the fragment plane and keep wiring, fuel or chemical systems, avionics, antennas, and occupied areas out of credible release paths. A large propeller stores substantial kinetic energy. Ground testing requires a designed restraint, remote shutdown, current and speed monitoring, barriers appropriate to the hazard analysis, and an exclusion zone. A person holding the airframe is not a restraint system.
+
+The manufacturer lists a 735 g motor, a 295 g controller, and approximately 80 g per VZ28 blade. A two-blade propulsion set therefore approaches 1.19 kg before the mount, propeller hub, fasteners, branch conductors, connectors, and protective structure. Four arms approach 4.76 kg on the same limited basis. Include this distributed mass in structural modes, wing bending, center-of-gravity analysis, landing loads, and transition dynamics.
+
+Balance each complete rotating assembly, not just an unmounted blade. Track propeller serial or batch identity where practical. After any strike, hard landing, abnormal vibration, or overspeed event, remove the assembly from service pending inspection under a defined process. Surface appearance alone cannot exclude internal composite damage.
+
+## Integrate electronic propeller locking as a flight function
+
+T-MOTOR describes the matching V150A system as able to lock the propeller at a selected angle and adapt locking current as external force changes. On a VTOL fixed-wing aircraft, stopping a lift propeller in a controlled orientation can reduce unwanted aerodynamic disturbance during wing-borne flight. That benefit depends on correct sensing, controller logic, rotor position, mechanical clearance, and the ability to recover safely.
+
+Treat locking as a state machine with explicit entry and exit criteria. The aircraft should know when lift demand has ended, when rotor speed is low enough for locking, whether the requested angle has been reached, and whether the controller reports a fault. Unlocking must precede a demanded restart, with enough time and bus capacity to produce lift before the flight condition becomes unsafe.
+
+Qualification should include:
+
+- lock-angle accuracy and repeatability across all arms;
+- time from rotating command to confirmed lock;
+- electrical consumption and temperature while resisting aerodynamic torque;
+- behavior when external airflow moves the blade away from the requested angle;
+- unlock and restart time at minimum and maximum bus voltage;
+- failure to lock, false lock indication, encoder fault, CAN loss, and PWM fallback behavior;
+- simultaneous restart of all lift units and its effect on bus voltage;
+- restart after thermal soak and at the environmental limits;
+- flight-controller response if one arm locks, unlocks, or restarts differently from its peers.
+
+Do not invent CAN identifiers, bit rates, message definitions, termination, or firmware settings from the words DRONECAN/UAVCAN. Use the protocol document and manual applicable to the exact V150A revision. Confirm whether PWM and CAN are alternatives, simultaneous interfaces, or a primary/fallback arrangement. Verify signal-loss behavior with propellers removed before restrained powered testing.
+
+## Design mounting, wiring, and environmental protection as one assembly
+
+Use the current T-MOTOR drawing to control the motor and ESC interfaces. Check fastener diameter, engagement, thread depth, adapter geometry, shaft and hub interface, and tool access. A screw that is too long can damage internal parts; one that is too short can lose clamp load. Establish torque and locking methods from approved technical data, not a generic table applied without considering material, inserts, lubrication, temperature, and vibration.
+
+The mount must carry thrust, motor torque, gyroscopic and maneuver loads, propeller imbalance, landing shock, and fault loads with justified factors. Verify thrust-line alignment and stiffness. Flexible mounting that appears to isolate vibration can introduce an unstable structural mode or allow the propeller plane to move toward the airframe.
+
+Route the one-metre motor leads and controller wiring with strain relief. Protect insulation from carbon-fiber edges and conductive debris. Keep power loops compact and control or encoder cables separated from high-current conductors where possible. Bond, shield, and ground according to the approved controller and aircraft electromagnetic-compatibility design; do not create ad hoc ground connections to cure noise.
+
+The motor's IPX5 statement is not a complete aircraft environmental qualification. It does not establish dust protection, immersion resistance, corrosion tolerance, connector sealing, or protection of user-made terminations. The ESC has its own ambient range and construction, but the cited public specification does not assign the entire installed propulsion assembly one common IP rating. Agricultural spray, salt, condensation, conductive dust, cleaning fluids, ultraviolet exposure, and trapped moisture require application-specific controls.
+
+Do not enclose the controller or coat components merely to improve water resistance. A sealed enclosure can remove the heat-dissipation condition required for the 70 A continuous statement. Any cover, coating, drain, filter, or fairing must be assessed for both environmental protection and thermal performance.
+
+## Build a thermal qualification around the real mission
+
+The manufacturer lists a motor ambient range from -30 to 55 degrees Celsius and a controller ambient range from -30 to 65 degrees Celsius. These are component statements, not a guarantee that the battery, propeller, bearings, connectors, avionics, or complete aircraft are approved throughout those ranges. The product page also notes a 72-degree motor-bell result after a ten-minute run at 75-percent command, 44.4 V, and 25-degree ambient. That one condition is useful reference evidence but does not predict every installation.
+
+Instrument at least bus voltage at each controller, input current, command, rpm, motor-bell temperature at a defined point, winding or thermistor temperature if supported, controller case temperature at a defined point, connector temperature, and ambient air. Record airflow configuration and sensor method. Infrared measurements require controlled emissivity and viewing geometry; a shiny rotating bell can produce misleading readings.
+
+Run a staged matrix:
+
+1. Verify low-power operation without propellers, including direction, encoder response, command mapping, and communication.
+2. Perform restrained static points with the exact propeller, increasing load only after current, vibration, and temperature stabilize acceptably.
+3. Repeat representative hover and climb durations at minimum and maximum planned battery state.
+4. Exercise transition, lock, cruise hold, unlock, restart, rejected landing, and go-around timing.
+5. Repeat the critical sequence after thermal soak and at the highest approved ambient condition.
+6. Test all arms together to reveal shared-bus sag, distribution heating, electromagnetic interference, and cooling interaction.
+7. Inspect and retest after the defined contamination or environmental exposure, if those missions are in scope.
+
+Stop on unexpected current growth, unstable rpm, increasing vibration, connector heating, controller reset, communication errors, loss of position sensing, abnormal sound, odor, or temperature that approaches the controlled acceptance threshold. A short successful maximum-thrust pull does not validate a ten-minute hover, repeated transition, or hot-day go-around.
+
+## Commission the installed propulsion system in controlled stages
+
+### Receiving and identity inspection
+
+Verify model, KV, CW or CCW SKU, physical dimensions, mass where controlled, labels, lead configuration, shaft and adapter condition, bearings, connectors, and revision markings. Reconcile the package with the purchase order and approved configuration. Quarantine unexplained differences.
+
+### Unpowered mechanical and electrical inspection
+
+Confirm fastener engagement, retention, propeller clearance, phase and position labels, strain relief, insulation, connector engagement, polarity, and freedom from debris. Rotate the motor by hand with the system made safe and investigate rubbing, binding, or inconsistent bearing feel. Verify the aircraft wiring record independently rather than trusting wire colors alone.
+
+### First energization without propellers
+
+Use a protected, current-observed power-up method compatible with the controller. Confirm normal startup, no unexplained current, correct flight-controller communication, valid sensor data, and stable firmware configuration. Test each position separately before the full bus is enabled.
+
+### Direction, command, and failure behavior
+
+With propellers still removed, verify commanded direction against the aircraft diagram. Check minimum and maximum command mapping, arming and disarming, PWM or CAN selection, signal loss, controller reboot, flight-controller reboot, CAN interruption, encoder fault indication, and emergency stop. The purchased CW or CCW label is not a substitute for this test.
+
+### Restrained propulsion testing
+
+Install only the controlled propeller and hardware. Measure current, voltage, rpm, thrust where the rig supports it, vibration, and temperatures through increasing stabilized points. Compare like-for-like channels. A unit that needs more current for the same thrust or rpm may have a propeller, alignment, bearing, phase, controller, or measurement problem.
+
+### Aircraft transition and locking tests
+
+Progress from safe ground logic checks to a flight-test plan approved for the aircraft. Define altitude, airspeed, energy, abort criteria, telemetry, chase or observation resources, and recovery actions. Verify that locked propeller angles do not create unexpected vibration, control interference, or restart delay.
+
+### Post-test inspection and baseline release
+
+After power is made safe, inspect motor mounts, hub and retention hardware, bearings, controller mounting, connectors, lead insulation, strain relief, discoloration, residue, and odor. Save raw data, configuration files, firmware versions, instruments, calibration status, photographs, anomalies, corrective actions, and approval. This dataset becomes the comparison baseline for maintenance.
+
+## Diagnose from measurements, not part swapping
+
+| Symptom | Capture first | Competing causes to separate |
+| --- | --- | --- |
+| One arm draws more current at equal thrust | loaded voltage, current, rpm, thrust, command, propeller identity, temperature | propeller variation, bearing drag, misalignment, phase-joint resistance, motor damage, controller variation |
+| Motor will not start or stutters | phase continuity, bus voltage at ESC, command trace, encoder status, firmware and fault log | open or resistive phase, invalid command, rotor-position fault, low voltage, mechanical obstruction, controller protection |
+| Current rises during a constant hover point | rpm, thrust, temperatures, bus voltage, vibration, airflow, time history | heating resistance, bearing distress, propeller damage, contaminated airflow, connector degradation, changing test condition |
+| Thrust is low at normal command | loaded voltage, rpm, propeller model and orientation, motor direction, aircraft weight | voltage sag, incorrect or reversed propeller, command scaling, damaged blade, wrong winding, aerodynamic interaction |
+| Controller resets during takeoff | voltage at controller, total bus current, event log, power-distribution temperature, avionics rails | bus sag, connector resistance, protection threshold, wiring inductance, power-supply coupling, firmware fault |
+| Lock angle is inconsistent | encoder data, CAN status, external airflow, current during lock, mechanical freedom | encoder alignment, protocol/configuration error, insufficient locking torque, bearing or propeller friction, aerodynamic load |
+| Vibration appears only near one speed | rpm spectrum, mount motion, propeller balance, fastener condition, airframe modal data | rotating imbalance, structural resonance, hub eccentricity, damaged bearing, flexible mount, blade tracking |
+| A motor is hotter than its peers | equalized thrust, current, rpm, airflow, bell and connector temperatures | load-sharing error, cooling blockage, electrical resistance, bearing drag, winding damage, sensor error |
+
+Avoid replacing the motor merely because it is hot or the controller because it reports a fault. The same symptom can originate in the battery, distribution network, command system, propeller, bearings, airframe alignment, airflow, or data acquisition. Preserve the event record and change one controlled variable at a time.
+
+## Define acceptance and maintenance limits before flight
+
+An acceptance record should include received identity, measured mass where relevant, mounting and wiring inspection, firmware and configuration, direction, no-load current, representative loaded current, rpm, thrust, vibration, thermal response, lock and restart timing, signal-loss behavior, post-test condition, deviations, and approval. Limits must come from controlled manufacturer data, aircraft analysis, and validated tests; they should not be invented after observing a convenient result.
+
+Trend the propulsion system over its service life. Record changes in no-load current, hover current corrected for mass and environment, motor temperature, controller temperature, vibration, lock timing, bearing feel, connector condition, and fault counts. A gradual trend can identify deterioration before it becomes a failed takeoff or transition.
+
+Inspection intervals should respond to mission severity. Dust, salt, spray chemicals, rain, repeated propeller locking, high-temperature hover, rough fields, frequent transport, and high vibration can justify shorter intervals. After maintenance, confirm that the same motor, direction variant, propeller, firmware, wiring, and configuration remain installed. Any uncontrolled substitution breaks the original evidence chain.
+
+## Procurement questions that should be answered before release
+
+Before ordering or installing the VL8020 KV170, obtain clear answers to these questions:
+
+- Does the quoted item include only the motor, and which adapter, hub, fasteners, and encoder parts are included?
+- What precisely differs between the UNITED UAV CW and CCW SKUs?
+- Which VZ28 propeller revision and rotation match each motor variant?
+- Is 12S the only approved battery configuration for the delivered motor revision?
+- Which published 180-second power value applies to the delivered revision?
+- Which V150A hardware and firmware revision generated the cited test data?
+- What are the approved PWM endpoints and CAN protocol, wiring, termination, node configuration, and fault behaviors?
+- What airflow or mounting condition supports the controller's 70 A continuous statement?
+- What motor and controller temperature limits apply, where are they measured, and what derating is required?
+- What fasteners, engagement, torque, locking method, inspection interval, and replacement criteria apply?
+- What service action follows water, chemical, salt, dust, propeller-strike, overspeed, or overtemperature exposure?
+
+A professional propulsion selection is complete only when the supplied hardware, controlled specification, aircraft design, and measured installation agree. For the VL8020 KV170, the public data are detailed enough to build a strong engineering plan: the curve shows where current accelerates, where efficiency falls, how voltage shifts the operating point, and how close maximum thrust comes to the motor-current boundary. The remaining work is disciplined configuration control and aircraft-specific qualification.
+
+## Sources and review basis
+
+- [UNITED UAV VL8020 KV170 product listing](https://store.uniteduav.com/products/vl8020-kv170)
+- [T-MOTOR official VL8020 product page](https://store.tmotor.com/product/vl8020-high-thrust-motor-for-vtol-uavs.html)
+- [T-MOTOR official VL8020 technical page](https://uav-en.tmotor.com/2024/VL-Series-Propulsion-System_1115/1258.html)
+- [T-MOTOR VL8020 Propulsion System Specifications PDF](https://store.tmotor.com/images/file/202502/131739429438176928.pdf)
+- [T-MOTOR UAV propulsion download center](https://uav-en.tmotor.com/download/39.html)
+
+Public sources were reviewed on 28 September 2026. Confirm the current manufacturer documents, hardware revision, and aircraft-specific requirements before procurement, installation, or flight.
+
+**Publisher:** UNITED UAV Official
