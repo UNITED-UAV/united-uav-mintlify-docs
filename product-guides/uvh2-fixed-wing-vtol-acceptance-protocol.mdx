@@ -1,0 +1,240 @@
+---
+title: "UVH2 Fixed-Wing VTOL Acceptance Protocol: From Published Limits to Pass/Fail Evidence"
+description: "A configuration-controlled factory and site acceptance protocol for the UVH2 dual-sensor fixed-wing VTOL, covering endurance, video-link, VTOL transition, payload outputs, mapping, thermal inspection, records, and release decisions."
+sidebarTitle: "UVH2 VTOL Acceptance Protocol"
+---
+
+A professional UAV purchase is not complete when the aircraft arrives, powers on, and flies once. It is complete when the delivered configuration can perform the buyer's defined mission, produce the required evidence, preserve an agreed reserve, and repeat the result under controlled conditions. That distinction is especially important for a fixed-wing vertical-takeoff-and-landing aircraft: vertical lift, transition, wing-borne flight, payload operation, communications, recovery, data transfer, and post-flight review all have to work as one system.
+
+This guide turns the public statements for the [UNITED UAV UVH2 dual-sensor fixed-wing VTOL drone](https://store.uniteduav.com/products/uvh2-dual-sensor-fixed-wing-vtol-drone) into a practical procurement and acceptance protocol. The current product identity is associated with mapping, land surveying, thermal inspection, and industrial monitoring. Verified product records state flight time of up to 60 minutes and video transmission of up to 15 kilometers. Both figures are upper-bound product statements, not guarantees for every payload, battery condition, radio environment, route, weather condition, reserve policy, or jurisdiction.
+
+The purpose of acceptance testing is therefore not to stage a favorable demonstration of those two numbers. It is to define the configuration and mission that matter to the buyer, run reproducible tests, preserve raw evidence, and make a release decision that remains intelligible months later.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/uvh2-dual-sensor-fixed-wing-vtol-drone-main-view..webp?v=1782461725" alt="UNITED UAV UVH2 dual-sensor fixed-wing VTOL aircraft used for a configuration-controlled acceptance protocol" />
+
+## Begin with four different kinds of truth
+
+Many procurement disputes begin because several different statements are treated as if they were equivalent. An acceptance file should keep them separate from the first request for quotation.
+
+| Evidence class | What it means | Example in a UVH2 evaluation | What it cannot prove by itself |
+| --- | --- | --- | --- |
+| Published statement | A value or application presented for the product | Up to 60 minutes of flight time; up to 15 km video transmission | Performance of the buyer's delivered configuration |
+| Ordered configuration | The exact equipment and revisions named in the quotation and order | Aircraft, payload, battery, controller, radio, ground station, software, accessories, training, and spares | That the items arrived, are integrated correctly, or meet the mission |
+| Observed result | A measurement from a controlled test | Airborne duration, remaining energy, link interruptions, file completeness, transition behavior | Universal performance outside the tested conditions |
+| Accepted capability | A result that meets a pre-agreed requirement with complete evidence | The delivered aircraft completes the representative route and lands with the specified reserve | Approval for a different route, payload, environment, or legal operating concept |
+
+Use those labels in the test report. Do not copy a product-page value into the “accepted capability” field. Do not turn one observed result into a general specification. When a result is conditional, record the condition instead of rounding it away.
+
+## Freeze the configuration before the first powered test
+
+The name UVH2 identifies a product family, but the acceptance object is one delivered system. Before testing, create a configuration baseline that another engineer can reconstruct without relying on memory. At minimum, record:
+
+- aircraft serial number and physical revision markings;
+- installed flight controller, firmware, parameter-set identifier, and checksum or exported configuration file;
+- visible and thermal payload identity, mount, wiring, firmware, and storage media;
+- propulsion components, propellers, orientation, fasteners, and any replacement history;
+- battery model, serial number, age or cycle record, charging method, and observed state before each test;
+- controller, video receiver, antennas, radio settings, ground-station hardware, and software version;
+- navigation, positioning, identification, or correction equipment included in the delivered package;
+- payload cables, data interfaces, removable modules, cases, chargers, tools, manuals, and spares;
+- measured takeoff mass and center-of-gravity method for the test configuration; and
+- every deviation from the signed quotation.
+
+Photograph labels, connectors, antenna installation, payload mounting, propellers, center-of-gravity setup, and the complete delivered package. Store the photographs with a dated bill of materials. If a battery, propeller, payload, antenna, firmware build, or parameter set changes, the report must show whether the affected tests were repeated. “Same model” is not an adequate change record.
+
+This baseline also prevents an easy but serious mistake: accepting an endurance demonstration with a light payload and later deploying a heavier or more power-hungry configuration. A result belongs to the mass, center of gravity, electrical load, software, and environment under which it was produced.
+
+## Write the acceptance requirements before scheduling the demonstration
+
+The buyer should define the mission in measurable language before the supplier chooses a route. “Suitable for mapping” is not a test requirement. “Collect complete visible imagery over the representative site, meet the buyer-defined overlap and ground-sampling requirements, preserve the required reserve, and deliver files that the nominated processing workflow can ingest” is testable.
+
+For each intended application, document:
+
+1. site boundary, terrain, obstacles, launch and recovery area, and alternate landing options;
+2. expected payload configuration and all-up mass;
+3. required coverage, route length, height constraints, target size, or inspection distance;
+4. weather and lighting envelope for the test;
+5. local airspace, pilot, observer, radio, privacy, and beyond-visual-line-of-sight constraints;
+6. required position, image, thermal, flight-log, and maintenance records;
+7. reserve and abort policy approved for the operation;
+8. pass, conditional-pass, fail, and retest rules; and
+9. people authorized to sign the result.
+
+The supplier may help refine the procedure, but the pass threshold should not be invented after the flight. A metric chosen after seeing the result is a description, not an independent acceptance criterion.
+
+## Use a two-gate structure: factory acceptance and site acceptance
+
+One flight cannot answer every procurement question. Split acceptance into two gates.
+
+### Gate 1: factory acceptance test
+
+The factory acceptance test, or FAT, establishes identity, completeness, basic functionality, and evidence availability before the system is exposed to the buyer's site. It should include receiving inspection, configuration capture, safe power-up, sensor and storage checks, controller and link verification, propulsion and control-surface inspection, navigation-status review, failsafe configuration review, a controlled flight sequence, data export, and post-flight inspection.
+
+The FAT is the right place to discover a missing cable, incorrect propeller orientation, incompatible software build, storage failure, undocumented option, or mismatch between quotation and delivered hardware. It should also prove that the test team can export the raw records needed for later analysis. A successful flight without retrievable logs is incomplete evidence.
+
+### Gate 2: site acceptance test
+
+The site acceptance test, or SAT, proves the agreed workflow at a representative operational location. It should use the delivered equipment, trained operating team, approved local procedures, and a mission close enough to real work to expose route, terrain, radio, payload, data-transfer, and turnaround constraints.
+
+Passing FAT does not automatically pass SAT. Conversely, a SAT problem does not automatically identify an aircraft defect. Terrain masking, local interference, site access, target contrast, route design, crew communication, or processing software can be the limiting factor. The report should identify the failed requirement and the evidence, not jump directly to a component replacement.
+
+## Convert “up to 60 minutes” into an endurance test
+
+An endurance test becomes useful only when its clock, configuration, reserve, and environment are defined. Record the exact events used for timing: first propulsion command, liftoff, transition completion, start of productive work, end of productive work, start of return, transition to landing, touchdown, and propulsion stop.
+
+Do not report only “flight time.” Preserve at least four durations:
+
+- total airborne time;
+- wing-borne time;
+- productive on-task time; and
+- time or energy reserved at landing.
+
+For mission planning, the relevant quantity is normally usable task time, not the longest possible airborne duration. A simple structure is:
+
+`usable task time = measured airborne time - launch/transition - outbound transit - return/recovery - required reserve - contingency allocation`
+
+Every term must come from the approved mission model or the representative test. The formula does not prescribe a reserve percentage. The responsible operator must set that reserve using current aircraft documentation, battery condition, route, wind, alternate recovery options, local rules, and the consequences of an aborted landing.
+
+Run the test with the intended payload operating, not merely attached. Payload electronics, storage, gimbal motion, video encoding, and radio transmission can change electrical demand. Record takeoff mass, center of gravity, battery identity, initial state, battery temperature, ambient temperature, wind, altitude or density-relevant conditions, route, hover duration, transitions, speeds, distance, and remaining energy at landing. Preserve the raw flight and battery logs.
+
+If the buyer wants a 45-minute operational route, the pass criterion should not be “the aircraft once remained airborne for 45 minutes.” A defensible criterion would also require the representative payload, completed work, successful return, defined landing reserve, no unresolved power-system warnings, and repeatability across the agreed number of trials. If a favorable tailwind or unusually light configuration produced the result, the report must not generalize it to the operational baseline.
+
+## Convert “up to 15 km video transmission” into a link test
+
+The public value describes video transmission distance. It should not silently be treated as an assured command-and-control radius, telemetry range, mapping radius, legal operating distance, or permission for beyond-visual-line-of-sight flight.
+
+Define each link separately:
+
+- command and control;
+- aircraft telemetry;
+- live visible video;
+- live thermal video, if separate;
+- positioning or correction data, if applicable; and
+- post-flight data transfer.
+
+For the representative site, record transmitter and receiver models, firmware, frequency or region configuration, antenna types, antenna orientation, mounting, ground-station height, aircraft height, terrain profile, obstructions, local radio conditions, and other active transmitters. Verify that the configuration is lawful in the intended country and that the flight plan remains within the applicable operating authorization.
+
+Test in progressive range gates rather than flying directly to a headline distance. At each gate, record received-signal indicators where available, video resolution, frame rate, latency, freezes, dropped frames, control latency, telemetry gaps, warnings, antenna orientation, and aircraft position. Predefine the abort threshold. Exercise the documented lost-link behavior in a controlled, legally compliant setup before depending on it at range.
+
+A useful pass result is not “video was visible.” It states the minimum acceptable quality and continuity for the mission. An inspection operator who must steer a sensor toward a small target may need lower latency and fewer interruptions than a mapping route that records imagery onboard. One acceptance threshold should not be copied across those two workflows.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/uvh2-vtol-drone-mapping-land-surveying-mission.webp?v=1782461725" alt="UVH2 fixed-wing VTOL shown in a mapping and land-surveying mission context" />
+
+## Test the VTOL sequence as an energy and control chain
+
+Fixed-wing cruise performance can conceal the energy and control demands of vertical flight. The complete acceptance sequence should include power-up, vertical takeoff, hover stabilization, climb, transition to wing-borne flight, representative turns and route segments, transition back to vertical flight, hover, landing, and post-flight shutdown.
+
+Record time, battery voltage, current or energy where available, position, height, speed, attitude, mode changes, warnings, and operator inputs around both transitions. Video of the aircraft from a fixed observer position can add useful evidence about oscillation, sink, yaw, wing drop, propeller behavior, or unusual sound. Synchronize that video with the aircraft log.
+
+Run the sequence at the accepted mass and center of gravity. A stable transition with a light battery or different payload mount does not close the test for the delivered mission configuration. The flight-test plan should define minimum height, usable airspace, wind limit, abort conditions, emergency landing areas, communication calls, and who has authority to terminate the test.
+
+Do not use acceptance testing to explore an unknown flight envelope. The test should remain inside the supplier's controlled operating instructions and the operator's authorization. If the required mission falls outside those boundaries, the correct outcome is an unresolved requirement, not an improvised demonstration.
+
+## Accept the sensor workflow by its deliverables
+
+The phrase “dual sensor” does not define what a customer will receive after a mission. For the delivered visible and thermal configuration, confirm what is viewed live, what is recorded onboard, which streams can operate simultaneously, how files are named, what timestamps and position metadata are stored, and which software can read the outputs.
+
+Use a controlled target sequence to verify:
+
+- visible focus and exposure are adequate for the defined target;
+- thermal imagery detects the buyer's representative contrast under stated conditions;
+- both channels record for the required duration without unexplained gaps;
+- live-view orientation and recorded-image orientation are understood;
+- timestamps and mission identifiers allow the observations to be associated;
+- storage capacity, card behavior, and file finalization survive the planned mission;
+- data transfer preserves file count, size, and checksums; and
+- an independent reviewer can reproduce the finding from the delivered files.
+
+Thermal contrast is not automatically a temperature measurement or a diagnosis. If the contract requires quantitative thermography, add requirements for calibration status, measurement accuracy, emissivity handling, reflected temperature, environmental observations, distance, angle, focus, and qualified review. If those capabilities are not documented for the delivered payload, label the result qualitative instead of making a radiometric claim.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/uvh2-k8t-v2-thermal-gimbal-camera-system.webp?v=1782461725" alt="Dual-sensor thermal gimbal associated with the UVH2 inspection configuration" />
+
+## Apply mission-specific pass criteria
+
+### Mapping and land surveying
+
+Define area, coordinate reference, required ground sampling distance, forward and side overlap, terrain model, route direction, lighting constraints, and coverage-completeness rule. If positional accuracy is contractual, define the check-point method, instruments, processing software, correction workflow, and statistical measure before the flight. Do not call an output “survey grade” merely because it looks sharp or aligns visually with a basemap.
+
+The mapping acceptance package should include the route, actual image positions, missing-image report, processing settings, control and check-point records where applicable, quality report, and final deliverables. The aircraft passes this mission only if the complete workflow meets the agreed requirements; finishing the route is not enough.
+
+### Thermal inspection
+
+Define the smallest relevant feature, expected contrast, inspection distance, viewing angle, operating condition of the asset, acceptable motion blur, and whether the output is for screening or measurement. Include targets that should not trigger a finding, because false positives can make an inspection workflow expensive or unsafe.
+
+Acceptance should require the reviewer to locate and classify the controlled target from the delivered record without relying on hints from the flight crew. If repeated inspections are planned, store route, camera orientation, time, environment, and target-state records so later imagery can be compared on a defensible basis.
+
+### Industrial monitoring
+
+Define who receives an alert, which evidence accompanies it, and how a finding is confirmed. A live video impression should not become an asset-maintenance decision without a traceable observation. Test the chain from airborne detection through file transfer, review, annotation, escalation, and archive.
+
+## Use an evidence matrix, not a demonstration narrative
+
+The following matrix can be adapted to the buyer's contract. Values and tolerances must be filled from the approved requirement set, not copied from this article.
+
+| Test ID | Object | Controlled variables | Required evidence | Decision question |
+| --- | --- | --- | --- | --- |
+| CFG-01 | Delivered configuration | Serial numbers, revisions, firmware, package contents | Signed baseline, photographs, exported settings | Does the system match the order? |
+| PWR-01 | Battery and power | Battery identity, temperature, charge method, load | Charger record, battery log, voltage/energy trace | Is the accepted mission supported with the defined reserve? |
+| VTL-01 | Vertical takeoff and hover | Mass, CG, wind, surface, pilot | Flight log, observer video, warnings | Is vertical flight stable within the approved test envelope? |
+| TRN-01 | Both transitions | Height, speed, mass, wind, mode logic | Time-aligned flight log and video | Are transitions controlled and repeatable? |
+| END-01 | Mission endurance | Route, payload state, mass, weather, reserve | Event timeline, raw log, landing state | Does usable task time meet the requirement? |
+| LNK-01 | Command and telemetry | Range gates, antennas, site RF condition | Signal and dropout log, warnings, route | Is control and telemetry continuity adequate? |
+| VID-01 | Visible and thermal video | Range, target, encoder settings, channel state | Recorded streams, latency/dropout observations | Is live video usable for the stated task? |
+| DAT-01 | Recorded data | Storage, timestamps, mission ID, transfer method | File manifest and checksums | Are complete, unaltered files deliverable? |
+| MAP-01 | Mapping output | Route, overlap, light, processing, controls | Image inventory, quality and accuracy report | Does the final mapping deliverable pass? |
+| THM-01 | Thermal output | Target, contrast, distance, angle, environment | Raw files, review sheet, limitations | Does the thermal workflow meet its defined scope? |
+| FLS-01 | Failsafe behavior | Controlled fault scenario and recovery area | Settings, event log, observer record | Does documented behavior occur safely? |
+| PST-01 | Post-flight condition | Completed mission and shutdown state | Inspection sheet, faults, temperatures | Is the aircraft fit for release or retest? |
+
+Every test row should name the responsible person, date, location, instrument or data source, calibration status where relevant, raw-file path, acceptance threshold, result, anomaly, corrective action, and approver. Store original data read-only and create analysis copies. A screenshot is useful context, but it should not replace an exportable log when the log exists.
+
+## Define failure, conditional acceptance, and retest rules
+
+A failed test should lead to a controlled disposition, not repeated attempts until one favorable result appears. Classify the outcome:
+
+- **pass:** all pre-agreed requirements and evidence conditions are met;
+- **conditional pass:** capability is acceptable only under a documented limitation that the buyer accepts;
+- **fail:** one or more requirements are not met;
+- **invalid test:** the method, configuration, environment, instrumentation, or data record prevents a conclusion; or
+- **not tested:** the requirement remains open.
+
+If a fault occurs, preserve the configuration and data before changing parts or settings. Record the symptom, time, phase of flight, warnings, operator input, environment, battery state, and relevant logs. Form competing hypotheses, then change one controlled variable at a time. Replacing several components and repeating the flight may restore operation, but it destroys the evidence needed to identify the cause.
+
+After corrective action, repeat the failed test and any earlier test whose evidence the change invalidates. A firmware change made to fix video behavior may also affect link, logging, failsafe, or payload control. The change assessment should decide which regression tests are required.
+
+## Put the evidence deliverables into the purchase order
+
+Before ordering, ask the supplier to identify exactly what will be delivered and what will be available for acceptance. A serious UVH2 request for quotation should address:
+
+1. the exact aircraft and payload configuration;
+2. included batteries, chargers, controller, receiver, antennas, ground station, accessories, tools, cases, and spares;
+3. firmware versions, update responsibility, configuration export, and rollback method;
+4. installed mass, center-of-gravity limits, and weighing method;
+5. the conditions behind flight-time and video-distance statements;
+6. the controlling manuals, checklists, maintenance instructions, and interface documents;
+7. supported visible and thermal live-view and recording combinations;
+8. file formats, timestamps, position metadata, storage requirements, and sample files;
+9. positioning and correction architecture required for the proposed mapping workflow;
+10. thermal measurement capability and calibration evidence, if quantitative results are required;
+11. command, telemetry, and video-link configurations for the destination country;
+12. lost-link, low-energy, navigation-degradation, and payload-fault behavior;
+13. factory and site acceptance responsibilities, locations, and test equipment;
+14. training scope for pilots, payload operators, maintainers, and data reviewers;
+15. warranty, diagnostic, repair, software-support, and spare-parts process; and
+16. the final signed configuration and acceptance dossier.
+
+If an answer is unknown, keep it open. An explicit open item is safer than an optimistic assumption hidden in a quotation. The order should also state how substitutions are approved. A different battery, camera revision, radio module, or controller may be reasonable, but its equivalence must be documented and the affected evidence reopened.
+
+## Release the system only on representative evidence
+
+The final release review should answer three questions.
+
+First, did the delivered UVH2 configuration match the controlled order? Second, did that configuration complete the buyer's representative workflow with the required reserve, data quality, link behavior, and safety controls? Third, can another qualified reviewer follow the evidence from requirement to raw record to conclusion?
+
+If the answer to any question is no, the acceptance file should show a corrective action, limitation, or unresolved item. It should not hide the gap behind the product's maximum published values.
+
+The UVH2's public identity as a dual-sensor fixed-wing VTOL for mapping, land surveying, thermal inspection, and industrial monitoring provides a useful starting point. Its up-to flight-time and video-distance values define questions worth testing. Procurement becomes defensible only when the buyer converts those questions into a configuration-controlled FAT, a representative SAT, explicit pass criteria, and a retained evidence package.
+
+For configuration details and a written quotation, review the [current UVH2 product listing](https://store.uniteduav.com/products/uvh2-dual-sensor-fixed-wing-vtol-drone) and provide the intended destination, mission, payload outputs, route, reserve policy, data requirements, and acceptance conditions.
+
+*Published by UNITED UAV Official. This engineering guide defines a procurement and acceptance method; it is not an aircraft manual, flight authorization, legal opinion, professional survey credential, thermography credential, or promise of performance. Use the current product documentation, qualified personnel, a site-specific risk assessment, and applicable local rules.*
