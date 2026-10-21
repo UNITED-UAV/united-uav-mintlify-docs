@@ -31,7 +31,8 @@
           "product-guides/dji-agras-t100-frame-connector-structural-inspection",
           "product-guides/t-motor-flame-70a-6s-esc-integration-validation",
           "product-guides/t-motor-vl8020-kv170-vtol-propulsion-integration",
-          "product-guides/uvh2-fixed-wing-vtol-acceptance-protocol"
+          "product-guides/uvh2-fixed-wing-vtol-acceptance-protocol",
+          "product-guides/ua50-liquid-load-mass-balance-verification"
         ]
       }
     ],

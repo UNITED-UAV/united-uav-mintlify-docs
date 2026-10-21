@@ -1,0 +1,204 @@
+---
+title: "UA50 Liquid-Load Verification: Aircraft Mass, Balance, and Measurement Uncertainty"
+description: "An engineering guide for UA50 buyers to reconcile the delivered aircraft configuration, liquid density, measured takeoff mass, center of gravity, measurement uncertainty, and acceptance records."
+sidebarTitle: "UA50 Liquid-Load Verification"
+---
+
+*By UNITED UAV Official*
+
+A tank-volume label cannot tell a fleet engineer what a complete aircraft will weigh at takeoff. It leaves several quantities unresolved: the installed hardware, the battery actually fitted, the liquid's density, residual fluid, added equipment, and the uncertainty of the measurements. A procurement team that records only “50 liters” can accept a package without establishing what that quantity means for the delivered aircraft.
+
+The [UNITED UAV UA50 agricultural drone](https://store.uniteduav.com/products/50l-agricultural-drone-ua50?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ua50_load_budget_20261021&utm_content=ua50_liquid_solid_load_budget) is a useful complete-aircraft example for building a better record. This guide addresses liquid-application configuration verification: how to define the weighing baseline, reconcile measured mass with a liquid calculation, understand balance, and identify the information a supplier must provide before acceptance.
+
+All worked quantities and weighing results below are hypothetical engineering examples. They are not UA50 test results, permissible loading instructions, chemical recommendations, or a flight-release decision. The delivered aircraft documentation and a qualified operator must determine the applicable loading envelope.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/50L-UA50-agricultural-drone-large-scale-spraying.webp?v=1773223488" alt="UA50 agricultural aircraft in the product catalog liquid-tank configuration" />
+
+## Start with the measurement boundary
+
+The current UNITED UAV listing declares a 50 L spray tank, 105 kg maximum takeoff mass, and 41.3 kg aircraft weight including a battery. These are seller-published reference values. They do not identify the exact configuration weighed, its measurement uncertainty, a center-of-gravity envelope, or an approved operating load for a particular mission.
+
+Keep three records separate:
+
+| Record | Quantity being described | Evidence needed |
+| --- | --- | --- |
+| Product reference | Seller-declared tank and aircraft figures | Current product information and its limiting conditions |
+| Delivered configuration | The specific airframe, battery, application system and installed equipment | Serial numbers, configuration list and actual measurements |
+| Operational release | The permissible loaded condition for the intended flight | Controlling instructions, balance envelope, operating restrictions and responsible approval |
+
+Subtracting the listed 41.3 kg from 105 kg produces 63.7 kg. That subtraction is arithmetically correct, but it is not a payload rating. It does not establish what was included in the reference aircraft weight, whether another limitation is lower, or whether the configuration's balance is acceptable. Procurement should request those missing boundaries rather than rename the subtraction “available payload.”
+
+A similar distinction applies to package contents. The listing describes two standard batteries and offers extra-battery, solid-spreader and generator options. Equipment delivered with the aircraft is not necessarily equipment installed on the aircraft. A transport case containing two batteries does not prove that both belong in the airborne mass calculation.
+
+## Establish a ready-to-load configuration
+
+Define the baseline as a physical state that the receiving team can reproduce. For liquid work, a useful starting record is the complete aircraft ready to receive its specified batch: installed flight battery, application assembly, hoses, pumps, nozzles, sensors, antennas, identification equipment, protective fittings, and any other airborne item.
+
+Specify the fluid condition as well. “Empty” can mean never filled, drained through the normal outlet, pump-primed with residual liquid, or cleaned and dried. Those states can have different masses. Select the condition required by the delivered procedure, describe it, and use it consistently. If retained liquid is already present during baseline weighing, adding an estimated residual again would double-count it.
+
+Record aircraft identity, battery identity, payload-system revision, software configuration where relevant, date, fluid state, and the complete list of installed items. Photograph the aircraft and the scale arrangement. Retain a separate inventory of equipment that stays on the ground: spare batteries, controller, charging equipment, generator, mixing equipment, and tools.
+
+The baseline should be measured after assembly. Adding separately weighed components is useful for prediction and troubleshooting, but it can miss cables, mounts, retained fluid, protective covers, or substituted hardware. A complete-system weighing provides an independent reconciliation.
+
+Do not infer battery mass by subtracting two catalog aircraft weights. Their inclusion boundaries may differ. If a component mass matters, weigh that identified component or obtain a controlled specification for its actual revision. This avoids turning a difference between loosely described reference states into a new technical claim.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/STANDARD.webp?v=1775217023" alt="UA50 standard-package illustration showing the aircraft, controller, two batteries and charging equipment" />
+
+*Catalog package illustration. The written quotation and installed configuration determine which items are supplied and which are airborne.*
+
+## Connect liquid volume to mass through density
+
+For a defined liquid batch, mass equals volume multiplied by density. With volume in liters and density in kilograms per liter, the result is kilograms. The arithmetic is simple; identifying the correct inputs is the harder part.
+
+Use the density of the actual prepared liquid at the relevant condition. A concentrate's density is not automatically the density of a diluted batch. Nor should a water-based mixture be assigned exactly one kilogram per liter without evidence. Composition, mixing state, temperature, and the measurement method can affect the value used.
+
+Consider three invented liquids, each occupying 50 L:
+
+| Hypothetical density | Calculated liquid mass |
+| --- | ---: |
+| 0.80 kg/L | 40 kg |
+| 1.00 kg/L | 50 kg |
+| 1.20 kg/L | 60 kg |
+
+The container volume is identical while the calculated mass changes by 20 kg across the examples. None of these densities represents a recommended material or an accepted UA50 condition. The table demonstrates why volume alone cannot close the aircraft mass record.
+
+Keep material suitability separate from density. A liquid can satisfy a mass calculation while remaining unsuitable for the application assembly or the intended operation. Obtain the material's permitted-use instructions and equipment compatibility information through the responsible supplier and qualified application specialist. The weighing exercise establishes a quantity; it does not approve a formulation.
+
+Also define what the measured volume represents. The amount mixed in a vessel, transferred through a meter, retained in a hose, and present in the aircraft tank can differ. A record that calls all four “loaded volume” will be difficult to reconcile.
+
+## Reconcile predicted and measured aircraft mass
+
+Use a mass ledger with an explicit inclusion rule:
+
+**Predicted loaded mass = measured baseline mass + newly added liquid mass + additions made after baseline weighing.**
+
+The final term should contain only items absent from the measured baseline. If an antenna, battery, or payload mount was already fitted, it must not be added twice. If an item is removed, record its removal rather than leaving an obsolete configuration in the worksheet.
+
+For a hypothetical calculation, suppose a delivered configuration has a measured ready-to-load mass of 44.6 kg. A separately measured batch contains 40.0 L at 1.12 kg/L. The calculated liquid mass is 44.8 kg, giving a predicted loaded total of 89.4 kg before any later additions.
+
+Suppose a subsequent complete-aircraft weighing reads 89.7 kg. The reconciliation residual is positive 0.3 kg:
+
+**Residual = measured loaded mass − predicted loaded mass.**
+
+That residual is a diagnostic result, not proof of a leak, an inaccurate flow meter, or an incorrect density. Competing explanations include measurement resolution, a tare error, a different liquid temperature, retained fluid, incomplete transfer, or an item omitted from the configuration list.
+
+Check the measurement boundaries first. Was the same battery fitted? Was the scale zeroed with the same support fixture? Did the baseline include priming fluid? Was all prepared liquid transferred? Did a hose remain attached to the aircraft during one measurement and not the other?
+
+If an additional 0.8 kg item is fitted after the baseline, the prediction becomes 90.2 kg. Adding it to both the baseline and the final-additions column would create a false discrepancy. A good worksheet makes the inclusion decision visible beside each item.
+
+## Carry measurement uncertainty through the calculation
+
+Displaying more decimal places does not make a measurement more certain. A 0.1 kg display increment, for example, says something about resolution; it does not by itself establish calibration error, repeatability, corner-loading behavior, or accuracy over the complete weighing range.
+
+For the hypothetical liquid calculation, suppose the input bounds are:
+
+- baseline mass: 44.6 kg with a bound of plus or minus 0.2 kg;
+- liquid volume: 40.0 L with a bound of plus or minus 0.5 L; and
+- density: 1.12 kg/L with a bound of plus or minus 0.01 kg/L.
+
+A transparent interval calculation evaluates the lower and upper combinations. The lower total is 44.4 + 39.5 × 1.11 = 88.245 kg. The upper total is 44.8 + 40.5 × 1.13 = 90.565 kg. The nominal result remains 89.4 kg.
+
+These bounds are invented for the example. They are not instrument specifications, a confidence interval, or a UA50 operating margin. They illustrate how several modest input uncertainties can matter when a decision is close to a limit.
+
+Do not combine error bounds as if they were independent statistical standard deviations unless the measurement model justifies that treatment. Calibration bias shared across several readings may not disappear through averaging. Repeating a biased measurement ten times can produce a precise-looking average with the same bias.
+
+There is also an operational distinction: measurement uncertainty and flight reserve are different provisions. Improving the scale does not supply extra energy for a return flight, improve rotor performance in hot weather, or establish structural allowance. Record each constraint under its own controlling requirement.
+
+The acceptance team should identify the applicable limit and the agreed decision rule before the measurement. If the uncertainty interval straddles that limit, a rounded nominal value does not establish compliance. Resolve the measurement or configuration rather than choosing a favorable rounding direction.
+
+## Verify the weighing arrangement
+
+Use a procedure appropriate to the aircraft, landing structure, equipment, and facility. Keep the aircraft unpowered and secured under the supplier's handling instructions. The procedure should prevent rolling, tipping, structural damage, unintended movement, and support from any surface that bypasses the weighing system.
+
+If several scales support the aircraft, all relevant load paths must be included. A cable, hose, restraint, stand, or landing member resting elsewhere can carry part of the weight and create a deceptively low total. Conversely, pulling down on the aircraft or trapping a hose can increase a reading without adding airborne mass.
+
+Check capacity, calibration status, usable resolution, zero behavior, repeatability, and whether the support surfaces sit at the required level. Differences in scale height can redistribute reactions or alter the aircraft attitude. A scale that is satisfactory for one component may be inappropriate for the complete loaded system.
+
+Record gross readings and tare readings separately. Include the support fixture's identity and whether it was tared physically or subtracted later. Preserve the original readings, including repeats, instead of retaining only the accepted total.
+
+Repositioning and repeating the weighing can expose an unstable setup, but follow a defined procedure rather than selecting whichever arrangement gives the smallest number. A disagreement should trigger investigation of the fixture, aircraft condition, or measurement system.
+
+## Examine balance as well as total mass
+
+Two configurations can have the same mass and different centers of gravity. A changed battery mount, optional module, accessory, or fluid distribution can move the balance point without changing the number displayed by a single totalizing scale.
+
+For a static weighing system with known horizontal support coordinates, support reactions can be used to calculate the horizontal projection of the center of gravity. The moment relation is:
+
+**Horizontal CG coordinate = sum of each support reaction multiplied by its coordinate, divided by total reaction.**
+
+Use one defined datum, sign convention, coordinate unit, and support map. The landing-gear contact geometry must come from measurement or controlled drawings. Aircraft length, wheelbase, or a marketing dimension should not be substituted for an unmeasured support coordinate.
+
+As an independent mathematical example, imagine a rectangular weighing fixture with front supports at x = +0.60 m, rear supports at x = −0.60 m, right supports at y = +0.50 m, and left supports at y = −0.50 m. These dimensions describe an invented fixture, not UA50 landing geometry.
+
+Suppose the recorded reactions are 22 kg front-left, 23 kg front-right, 19 kg rear-left, and 20 kg rear-right. Their sum is 84 kg. The front pair totals 45 kg and the rear pair 39 kg, so the calculated x coordinate is 0.04286 m forward of the fixture center. The right side totals 43 kg and the left side 41 kg, giving a y coordinate of 0.01190 m to the right.
+
+The calculation does not say whether either coordinate is acceptable. That requires the delivered aircraft's documented CG envelope and configuration restrictions. It also does not establish CG height, dynamic fluid behavior, or balance during maneuvering.
+
+Scale error and coordinate error affect the moment calculation. A missing reaction or an incorrect datum can produce a plausible-looking result that is physically wrong. Preserve the support map and individual readings so another engineer can reproduce the calculation.
+
+## Consider the entire liquid-consumption sequence
+
+A full-tank check is only one state. As liquid is consumed, total mass decreases and the distribution of the remaining liquid can change. The initial condition does not automatically describe a nearly empty tank, retained fluid in an asymmetric line, or a partially filled condition.
+
+Ask the supplier which loading states and attitudes the aircraft's documented balance envelope covers. Confirm the procedure for installation, tank retention, fluid-system priming, draining, and checking any condition identified as significant in the operating instructions.
+
+Do not invent a maneuver to investigate slosh during an acceptance flight. If additional testing is needed, it belongs in a qualified, supplier-supported test plan within the established operating envelope. A procurement worksheet can identify an unanswered question without attempting to solve it through an improvised flight.
+
+For ground reconciliation, distinguish liquid added, liquid recovered, liquid discharged under the approved test method, and liquid retained. The balance is useful only if those quantities share a clearly defined boundary. A treatment-area screenshot cannot establish the aircraft's liquid mass history.
+
+## Reopen the baseline after a configuration change
+
+The current UA50 configuration matrix distinguishes the optional 80 L solid spreader from the liquid setup. A changeover alters the object being evaluated. The old liquid-configuration baseline should not be carried into the spreading configuration merely because the aircraft model name stays the same.
+
+Reconcile removed and added assemblies, mounting hardware, wiring, retained material, and any required controller configuration. Follow the documented installation and balance checks for the delivered module. The same rule applies to battery revisions, brackets, sensors, protective equipment, and repairs that change the installed state.
+
+Separate airborne equipment from field infrastructure. The optional gasoline generator belongs to the ground-power discussion; its availability as an order option does not establish onboard fuel-powered propulsion. A purchase package and an aircraft mass ledger describe different boundaries.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/STANDARD-WITH-SOLID-SPREADER.webp?v=1775217023" alt="UA50 package illustration with a separate optional solid spreader in addition to the liquid-configuration aircraft" />
+
+*The separate spreader illustrates why a changed application assembly needs its own installed baseline. The image is a catalog package illustration, not a flight-test record.*
+
+## Build a receiving record that another person can audit
+
+The acceptance dossier should let a reviewer move from the order to the physical system, then from the measurements to the conclusion. A compact record can include:
+
+| Record group | Information to retain |
+| --- | --- |
+| Configuration | Aircraft, battery and application-assembly identity; installed-items list; revision and photographs |
+| Baseline | Fluid state, complete-system mass, tare method, scales, calibration status and raw readings |
+| Liquid batch | Material identity, density basis, volume or transferred mass, temperature where relevant and transfer boundary |
+| Loaded condition | Complete measured mass, predicted mass, residual, additions/removals and reconciliation |
+| Balance | Datum, coordinates, support reactions, aircraft attitude, calculation and controlling envelope reference |
+| Decision | Applicable restrictions, measurement decision rule, unresolved items, corrective action and responsible sign-off |
+
+Ask for this evidence in the quotation process. Otherwise, the receiving team may discover that the supplier's demonstration used a different battery, omitted an accessory, or retained no raw weighing data.
+
+A discrepancy should have an owner and a disposition. Record whether the cause was found, what changed, which measurements were repeated, and which earlier results became invalid. Preserve the first result alongside the corrected one. Replacing a record without its history makes later maintenance comparisons unreliable.
+
+Keep the engineering calculation separate from the release signature. A worksheet can calculate a total correctly while the configuration still lacks a controlling balance limit or an installation approval. The responsible parties should resolve that gap explicitly.
+
+## Questions that deserve written answers
+
+### Does a 50 L tank establish a 50 kg payload?
+
+No. Volume becomes mass only after density is specified, and the resulting liquid mass is only one part of the complete aircraft. Ask for the delivered configuration's loading instructions, tank-use restrictions, balance limits, and measured ready-to-load baseline. A nominal fill volume should never replace those records.
+
+### Can the catalog battery-included weight serve as the acceptance baseline?
+
+It is a planning reference. Receiving acceptance needs the actual installed configuration and a described fluid state. Use the catalog value to formulate questions and identify a large discrepancy, then reconcile it with the measured delivered aircraft. Do not silently force the measurements to agree with the reference.
+
+### Why can a correct total mass still leave an unresolved condition?
+
+Total mass does not specify where the load acts, which module is fitted, whether retained liquid has been counted correctly, or whether the configuration falls within its documented envelope. The balance record, installation instructions, measurement quality, and operating restrictions remain relevant even when the arithmetic total looks comfortable.
+
+### What should a buyer send with a UA50 configuration inquiry?
+
+Provide the selected package, intended liquid and its density information, batch quantity, installed accessories, operating environment, and the evidence required at acceptance. Ask which controlled documents define the mass and CG limits, which weighing procedure applies, and how configuration changes are recorded. Request sample acceptance records if the procurement process depends on them.
+
+## Turn the calculation into a better purchase decision
+
+The useful output is a traceable mass-and-balance record for the supplied aircraft. It connects a specific configuration to a measured baseline, a defined liquid batch, transparent uncertainty, documented limits, and a responsible decision. That record remains useful when equipment is replaced, a different liquid is introduced, or a receiving inspection must explain a discrepancy.
+
+Review the [current UA50 product and package options](https://store.uniteduav.com/products/50l-agricultural-drone-ua50?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ua50_load_budget_20261021&utm_content=ua50_liquid_solid_load_budget), then ask UNITED UAV for a written configuration response tied to your liquid-application requirements. The numbers become procurement evidence when their boundaries, conditions, and measurement methods are known.
+
+*Commercial disclosure: UNITED UAV sells the UA50. Product references are seller declarations; the worked calculations are original hypothetical examples. Published by UNITED UAV Official.*
