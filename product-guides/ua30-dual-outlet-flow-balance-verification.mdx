@@ -1,0 +1,132 @@
+---
+title: "UA30 Spray-System Verification: Why Total Flow Does Not Prove Two-Outlet Balance"
+description: "A measurement-focused UA30 procurement guide separating aggregate flow error, unequal outlet delivery, collection bias and missing acceptance evidence."
+sidebarTitle: "UA30 outlet-flow verification"
+---
+
+*By UNITED UAV Official*
+
+A spray-system display can show the expected total while the two outlets deliver different quantities. The total answers one question: how much liquid crossed the measurement boundary? It does not necessarily answer another: how was that quantity divided? A receiving inspection that records only the displayed total can therefore leave a significant system question unresolved, even when its arithmetic is correct.
+
+The [UNITED UAV UA30 agricultural aircraft](https://store.uniteduav.com/products/ua30-30l-agricultural-drone?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ua30_flow_balance_20261104&utm_content=ua30_dual_outlet_flow_balance) provides a concrete context. Its current listing describes two centrifugal nozzles and a brushless water pump with a flow meter. Those are seller declarations, not an independently verified hydraulic diagram. Before designing an inspection, obtain the delivered configuration's actual circuit, measurement location and approved test method.
+
+This guide develops an evidence request and a way to interpret supplier-supported collection results. It is not an instruction to energize an aircraft, operate exposed rotating equipment, apply a chemical, or release a machine for flight. All numerical results below are hypothetical. They are neither UA30 measurements nor recommended operating settings, imbalance limits or acceptance tolerances.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/UA30-agriculture-drone-side.webp?v=1757508470" alt="UA30 catalog aircraft in a side perspective with arms deployed" />
+
+*UA30 catalog reference, not a photograph of a collection test. Visible equipment does not establish the internal liquid circuit or meter location.*
+
+## Define three quantities before comparing readings
+
+Keep aggregate delivery, outlet distribution and deposition separate. Aggregate delivery is the combined quantity leaving the system boundary during a defined interval. Outlet distribution describes the separate quantities assigned to identified outlets during that same interval. Deposition describes what arrives at the intended receiving surface under the actual application conditions. These are different measurements with different evidence requirements.
+
+Equal outlet quantities do not establish equal droplet spectra or satisfactory deposition. Conversely, a difference between two collected quantities is not automatically a failed aircraft: the comparison may have used unequal intervals, different capture efficiencies, or a configuration whose specified outputs are intentionally unequal. Establish the intended relationship before judging the result.
+
+Ask the supplier to identify the physical outlets as A and B on a configuration drawing. Avoid assigning left and right from a product photograph alone. Aircraft orientation, viewing direction and assembly revisions can make those labels ambiguous. Preserve the same identifiers in the diagram, collection vessels, raw results and final report.
+
+State exactly which result is wanted: simultaneous outlet quantities over a settled interval, cumulative delivery across a complete command sequence, or comparison with a displayed cumulative counter. A rate averaged over a stable interval is not interchangeable with a total that includes startup and shutdown. That distinction should appear in the test request, not be reconstructed afterward.
+
+## Locate the meter and every unmeasured path
+
+The phrase “with a flow meter” does not reveal where the instrument is installed. Request a diagram showing the tank, pump, measuring element, any split, return paths and final outlets. The delivered circuit might not match a convenient two-branch sketch. Do not infer a common manifold, separate branch meters, pressure compensation or independent outlet control unless the supplied documentation establishes them.
+
+If a meter is upstream of a return path, its cumulative reading may describe something other than final discharge. A comparison with collected outlet liquid would then need to account for that path. Similarly, a quantity retained in hoses or another component between the meter and the collection boundary can create a difference during a transient interval without establishing a sensor error.
+
+Write a boundary statement that another reviewer can challenge. For example, the proposed comparison might place the reference boundary at the final outlets and include all captured liquid during an agreed interval. The supplier should then explain how the installed meter's quantity relates to that boundary. If the relationship is unknown, retain the result as an unresolved comparison rather than calculating a misleading accuracy percentage.
+
+The catalog's pump wording includes the label “8L.” Without a time unit and supporting conditions, that label is not a verified flow rate. It cannot supply a reference in liters per minute, a maximum test point, or an acceptance limit. Ask for an identified pump specification instead of filling in the missing unit.
+
+## Make the collection method part of the measurement
+
+A useful collection record identifies the fixture and its capture boundary, not merely the vessel size. The supplier-approved method must explain how each outlet's liquid is captured without creating a hazard or materially changing the behavior being assessed. An improvised enclosure or restrictive attachment can alter the test object. A photograph of two containers does not establish that the collection process is valid.
+
+The responsible test team should determine the safe setup, isolation state, permitted test liquid and operating procedure. This article supplies none of those operating steps. Do not bypass interlocks, improvise an energized-aircraft arrangement, or assume that the absence of flight makes rotating or electrically powered equipment harmless. If an approved method cannot provide the desired comparison, ask for an appropriate supplier test or laboratory service.
+
+For a gravimetric collection, identify each vessel and record its tare and final mass separately. Define whether it is dry, pre-wetted or allowed to drain before weighing. Document evaporation, splashing, incomplete capture and liquid that remains outside the weighed boundary. A missing quantity is a measurement limitation, not a correction that can be guessed until the totals agree.
+
+The UA30 listing's seller-declared 30 L tank volume does not provide evidence that the tank is a calibrated reference measure. A level mark or a nominal capacity label should not become the reference instrument for a precise comparison. Select a reference method whose resolution and uncertainty are appropriate for the question, then retain its supporting records.
+
+## Use one collection interval for both outlets
+
+For simultaneous comparison, A and B need the same start and stop definition. Write down whether the interval follows a command timestamp, a physical collection event, a meter counter event, or another documented trigger. Explain how those events are synchronized. Two observations described as “thirty seconds” can represent different liquid boundaries if their triggers differ.
+
+A collection interval can exclude a startup transient or include it, but the choice must be explicit and consistent with the question. A settled-rate comparison should not silently include the filling of an initially empty line on one side. A complete-cycle comparison should not discard the startup quantity merely because it makes the result less tidy.
+
+Record residual discharge after the chosen stop event. Whether that liquid belongs in the collected total depends on the stated method. If the display stops integrating at a command event while collection continues through later drainage, the results do not describe the same interval. Preserve both observations and resolve the boundary before assigning blame to the meter or outlet.
+
+Timing deserves particular attention for small collections. In a hypothetical example, collecting 2.000 L over an actual 30.5 seconds gives approximately 3.934 L/min. Dividing by a recorded 30.0 seconds instead gives 4.000 L/min, about 1.7 percent higher. That discrepancy arises without changing the liquid system. Longer collection is not automatically the solution; the approved method and the intended transient behavior determine the relevant interval.
+
+## Calculate total delivery and split separately
+
+Consider a hypothetical simultaneous collection using a test liquid whose established density is 1.000 kg/L. Outlet A yields a net collected mass of 1.150 kg and outlet B yields 0.850 kg during the same 30.0-second interval. Assume, solely for this arithmetic example, that capture is complete and the relevant density and timing conditions have been established.
+
+The collected volumes are 1.150 L and 0.850 L. Converting each to an average rate gives 2.300 L/min for A and 1.700 L/min for B. The combined reference rate is therefore 4.000 L/min. A displayed aggregate rate of 4.000 L/min would agree with that total while saying nothing by itself about the distribution.
+
+Use an explicitly defined index rather than the undefined phrase “percent imbalance.” One possible index is the absolute difference divided by the two-outlet mean, multiplied by one hundred. Here the difference is 0.600 L/min and the mean is 2.000 L/min, so the index is 30 percent. Each outlet is 15 percent away from that mean, while their shares of the total are 57.5 percent and 42.5 percent.
+
+Those descriptions are consistent, but their percentages have different denominators. A report that gives only “15 percent imbalance” leaves the reader unable to reproduce the result. State the equation and retain the individual quantities. The example establishes no acceptable value: the required distribution and its tolerance must come from the applicable specification and agreed acceptance method.
+
+For the same liquid and the same collection interval, the common density and time factors cancel algebraically from this particular split index. They do not cancel from the total volumetric rate. Independent capture losses, tare errors or different measurement-channel responses can still affect the split. Cancellation of a factor in an equation does not validate the underlying experiment.
+
+## Keep meter error distinct from outlet inequality
+
+Compare the meter only after establishing a reference quantity that describes the same boundary and interval. Define the signed relative difference as the meter quantity minus the reference quantity, divided by the reference quantity, multiplied by one hundred. Retain the sign: a high reading and a low reading can suggest different investigations, although neither identifies a cause by itself.
+
+An aggregate-meter comparison and a split comparison produce two separate findings. A system can agree on total and disagree on distribution; disagree on total and meet the specified distribution; disagree on both; or satisfy both agreed criteria. A single pass label hides this distinction. Record each finding against its own requirement and measurement uncertainty.
+
+In the hypothetical collection above, changing the displayed aggregate rate to 4.200 L/min would produce a positive five-percent difference from the 4.000 L/min reference. The outlet split would remain unchanged. Adjusting an aggregate conversion factor until the total agrees would not explain the unequal separate quantities. Do not use one successful correction as evidence that an independent issue has disappeared.
+
+Also distinguish a cumulative counter from an instantaneous display. A screen value may be rounded, filtered or updated at a different interval from the collection record. Ask what each exported field means and which value is appropriate for comparison. A photograph of a display is useful context, but it is not a substitute for a documented counter definition and raw observations.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/UA30-agriculture-drone-front.webp?v=1757508448" alt="UA30 catalog aircraft viewed from an elevated front perspective with arms extended" />
+
+*This second product view helps identify the aircraft being discussed. It does not demonstrate balanced flow, nozzle calibration or treatment performance.*
+
+## Challenge the measurement before diagnosing hardware
+
+When A and B differ, first ask whether the collection method can create that difference. Check vessel identities, tare records, capture completeness and synchronization. Look for a consistent loss associated with one measurement position. A systematic collection bias can survive repeated tests and appear reassuringly repeatable.
+
+Where the approved method permits, the responsible team can use a controlled exchange of measurement channels or collection positions to help separate instrument effects from outlet effects. Document exactly what was exchanged. Do not describe a result as following an outlet if a hose, controller setting or another part of the liquid circuit changed at the same time. Do not reconfigure aircraft plumbing solely to imitate a generic diagnostic suggestion.
+
+Repeat selected conditions without changing the configuration, and retain every result. A narrow spread among repeats measures repeatability under those conditions; it does not prove that the mean is accurate. Then identify any authorized changed condition separately. Mixing several configurations into one average destroys the link between the observed difference and the machine state.
+
+Use the pattern to choose the next question, not to announce a component failure. A difference that follows a collection channel suggests a measurement investigation. A reproducible difference associated with the same documented outlet deserves a supplier review of the relevant circuit. Neither observation alone establishes which component requires replacement or whether any adjustment is permitted.
+
+## Report uncertainty without inventing a tolerance
+
+A meaningful report describes how the result depends on measured inputs and corrections. [NIST Technical Note 1297, Appendix A](https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty) explains a measurement-model approach that includes significant uncertainty contributions and their relationships. It supplies no UA30-specific accuracy rating or acceptance limit.
+
+For this task, the test team should consider reference-instrument calibration, resolution, tare behavior, timing, density where relevant and incomplete capture. Reusing one instrument or one timing reference can introduce shared contributions; do not automatically treat every quantity as independent. Repeated observations cannot reveal every systematic effect. State which effects were evaluated and which remain unknown.
+
+Keep the estimated result, its uncertainty and the acceptance tolerance as separate entries. An arbitrary percentage selected after seeing the data is not a documented requirement. Nor should a display's number of decimal places be read as its accuracy. Ask for a decision rule that explains how uncertainty affects a result near a limit, and identify who approved that rule.
+
+Where a required limit or an important uncertainty contribution is missing, say “not evaluated” or “unresolved,” as appropriate. Do not turn that absence into a zero. An honest unresolved result is more useful to procurement than a clean-looking pass that another engineer cannot defend.
+
+## Preserve configuration and event evidence
+
+Identify the aircraft, spray assembly, pump, meter, outlet assemblies and relevant software or settings by the available controlled references. Ask the supplier which identifiers affect applicability. A model name by itself cannot establish that a replacement component or an updated configuration shares the earlier test result.
+
+The record should connect the test procedure to the actual supplied state. Retain photographs that identify the setup, a circuit drawing, instrument records, test-liquid identity, initial condition, raw masses or volumes, time definitions, meter observations and calculations. Include excluded runs and their reasons. Preserve the original result when a correction or an authorized configuration change requires a retest.
+
+An ordered table is helpful, but it should point to raw evidence rather than replace it:
+
+| Record | Question it must answer |
+| --- | --- |
+| Circuit and identifiers | Which configuration and measurement boundaries were tested? |
+| Capture-method record | Where did each collected quantity begin and end? |
+| Raw A and B observations | Can the separate outlet results be reconstructed? |
+| Meter and event record | Does the aggregate comparison cover the same interval? |
+| Uncertainty and criteria | What does the result support, and how was the decision made? |
+| Disposition and retest | What remains unresolved, and what changed afterward? |
+
+Keep this dossier separate from a flight or application release. A successful collection comparison does not establish aircraft loading, safe deployment, permissible chemical use, droplet classification or field deposition. Those questions require their own applicable documentation and responsible review.
+
+## Ask for an answerable supplier demonstration
+
+Request a demonstration tied to the delivered UA30 configuration rather than a generic video of liquid leaving two nozzles. Specify the intended evidence: circuit identity, aggregate-meter boundary, separate outlet quantities, timing basis, uncertainty treatment and agreed criteria. Ask for sample raw records before deciding that a demonstration format is sufficient.
+
+The supplier should identify what can be demonstrated using its approved procedure and what requires a different method. If simultaneous capture is unavailable, sequential observations may answer a different question, but the report must disclose that limitation. Two measurements made at different times should not be presented as proof of simultaneous balance under unchanged conditions.
+
+Review the [current UA30 product and configuration options](https://store.uniteduav.com/products/ua30-30l-agricultural-drone?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ua30_flow_balance_20261104&utm_content=ua30_dual_outlet_flow_balance), then send UNITED UAV a request for the measurement dossier appropriate to your acceptance requirement. Include the intended liquid-system configuration and the exact result you need to verify. The useful deliverable is a reproducible explanation of total delivery and outlet distribution, with its limits visible—not a single attractive flow number.
+
+*Commercial disclosure: UNITED UAV sells the UA30. Product descriptions above are identified seller declarations. Worked quantities are hypothetical examples, not field results. Published by UNITED UAV Official.*
