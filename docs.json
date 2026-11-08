@@ -33,7 +33,8 @@
           "product-guides/t-motor-vl8020-kv170-vtol-propulsion-integration",
           "product-guides/uvh2-fixed-wing-vtol-acceptance-protocol",
           "product-guides/ua50-liquid-load-mass-balance-verification",
-          "product-guides/ua30-dual-outlet-flow-balance-verification"
+          "product-guides/ua30-dual-outlet-flow-balance-verification",
+          "product-guides/ua20-vehicle-loading-clearance"
         ]
       }
     ],
