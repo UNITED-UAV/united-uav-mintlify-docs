@@ -1,0 +1,79 @@
+---
+title: "Verify the Usable Image Footprint of a UG32 Mapping Camera"
+description: "Compare camera originals, installed captures and exported files to find obstructed pixels and document the usable image area of a quoted UG32 mapping payload."
+sidebarTitle: "UG32 mapping camera footprint"
+---
+
+Published by UNITED UAV Official
+
+A survey team can receive photographs at the quoted pixel dimensions and still lose part of the scene at the edges. An installed bracket might enter a corner, a lens might give a gradual falloff in illumination, or an export might crop the image and scale it back to its original dimensions. These are different faults with different remedies. A buyer can separate them by asking the supplier to show what the camera sees before installation, what the assembled system records, and what the processing software actually receives.
+
+## Define the camera configuration that the supplier is quoting
+
+The [UG32 fixed-wing VTOL aircraft listing](https://store.uniteduav.com/products/ug32-fixed-wing-vtol-uav?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ug32_camera_footprint_20261111&utm_content=ug32_mapping_camera_footprint) gives a seller-listed maximum payload of 5 kg and a no-load runtime of 240 minutes. It names mapping, oblique and lightweight gimbal cameras among the possible payload types. Use those entries to start the configuration discussion. Request the specific camera and lens in the offer, the installed hardware, and a sample file from the exact combination. The general listing leaves the camera model, the usable image area and the loaded duration to be established for that configuration.
+
+Ask for an equipment list that identifies the camera body, lens, filter or protective window, mounting plate, isolators and any housing lip near the front of the lens. Record the sensor mode, focal length, focus condition, image orientation and correction settings in the same document. Keep photographs of the installation from the side and from the front. These show the position of the lens relative to nearby aircraft hardware. A catalog photograph of the aircraft is useful for confirming the model, while the installation photographs and original images are the evidence for the quoted package.
+
+Give the camera setup a revision that will appear on the sample folder and the purchase schedule. Two packages with the same camera body can have a different field of view if one uses a different lens or capture mode. A replacement bracket can also move a nearby edge relative to the lens. In a comparison between suppliers, ask each to identify exactly which parts and settings produced its sample. That makes the acceptance evidence transferable to receiving inspection when the delivered equipment is unpacked.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/vtol-drones-long-endurance-flight.webp?v=1784546067" alt="UG32 fixed-wing VTOL aircraft viewed from above and in front" />
+
+## Collect a reference pair with a controlled change
+
+Ask the supplier to provide two captures of the same evenly illuminated field. One should be made with the specified camera and lens on a bench setup with a clear view. The other should be made with the same optical setup in the proposed installation, with the aircraft supported on the bench. Preserve the original files. Use the same sensor mode, focal length, focus, aperture and exposure when the equipment permits. An automatic exposure or shading profile can change the brightness distribution between frames and make a direct comparison harder. If a protective window or hood differs between the two setups, label the difference so the result can be interpreted or repeated with that part held fixed.
+
+An evenly illuminated scene helps reveal where brightness changes across the frame. A smooth reduction toward multiple edges may come from the optical system. A boundary that appears only in the installed view and is fixed in image coordinates is a reason to investigate nearby hardware. An out of focus obstruction may look soft, and uneven lighting can make one corner darker. Look for a repeatable difference between paired captures before assigning a cause. If the source provides linear image data, compare matched areas at the center and corners after accounting for the camera's black level. With processed JPEGs, keep the same processing and use the brightness comparison as a qualitative check unless the image response is known.
+
+Repeat the pair using a textured chart or a scene with identifiable features extending into all four corners. The uniform field can show a brightness difference but gives little evidence that a survey feature remains readable. A textured capture reveals whether an edge hides the features, whether corner detail remains visible through gradual shading, and whether a correction has amplified noise. Keep the chart position and camera orientation consistent across the pair. Save a full frame and labeled corner crops so a reviewer can trace each crop back to its original pixel coordinates.
+
+If a boundary is suspected, ask the supplier to repeat the comparison after checking one part of the configuration at a time on the supported bench. An image that clears when a particular housing is absent points to a different correction from an image whose dim corners appear in both setups. Record the observed result alongside the actual part or setting changed. This narrows the issue enough to give the supplier an actionable request and keeps a useful comparison when the next sample arrives.
+
+## Test the image modes and viewing positions in the offer
+
+A buyer accepting a downward camera view and two oblique views needs a separate sample for each. Write the intended viewing position in the test record and show the image orientation. A corner that is clear in one view can contain a housing edge in another. If the supplier proposes a moving mount, agree on the specific positions needed for the deliverable and request evidence at those positions. Images taken at the center of the travel show only that one state. A repeatable mark or recorded angle is useful when someone else needs to reproduce a disputed sample.
+
+Check the image mode at the same time. A camera can use a different portion of its sensor when the aspect ratio or readout mode changes. Keep the original dimensions, format and orientation metadata for each mode. If a sample was made with a narrower mode that avoids the suspected corner, place it alongside the full frame so the difference is visible. Where a deliverable uses several modes, define the usable footprint per mode or specify a shared region that every accepted mode provides.
+
+<img src="https://cdn.shopify.com/s/files/1/0750/8112/2008/files/fixed-wing-vtol-uav-main-view.webp?v=1784546086" alt="Lower front-oblique catalog view of the UG32 aircraft" />
+
+## Decide which dim areas still show the required features
+
+Choose a feature that represents the smallest or least distinct detail the customer needs to recognize. It might be the edge of a survey target or the boundary between two similar surfaces. Put copies of the same feature at the center and near each proposed edge of the usable region in the test chart. Ask the reviewer to identify the feature in the original and in the delivery file at the same viewing scale. Keep the feature positions and the response in the record. A field that looks evenly lit in a reduced preview can still lose contrast where the full image matters.
+
+Where linear data are available, a simple relative illumination comparison helps choose which areas need closer inspection. In a fictional matched pair, suppose the reference image has black-level-corrected means of 1000 counts at the center and 700 at one corner. The corner is at 70 percent of the center. If the corresponding installed capture has means of 1000 and 500, the corner is at 50 percent. The local difference is 20 percentage points on that scale. Repeat the comparison with the lighting and exposure held constant before attributing the difference to the installation. Then use the feature chart to determine whether the dimmer region still shows the detail required by the project.
+
+Evaluate the delivered image with the correction profile enabled if that profile will be part of the job. A correction may lift a dim corner enough to make its average brightness look like the center. It also changes the visibility of noise, so check the contrast and repeatability of the chosen feature over several samples. If the feature is absent in the original, increasing the brightness of the export cannot restore it. Keep the observations from the two tests distinct. This lets the buyer approve a view with usable but dim edges, request a different setup where information is missing, or exclude a documented region with a mask.
+
+## Mark the unusable pixels before counting the retained area
+
+Start with the full original and use one coordinate convention throughout. A convenient convention measures horizontal position from the left and vertical position down from the top. Mark the region in which the agreed feature can be recognized with the expected contrast. A boundary can be stored as a pixel mask, with a rectangular crop added if the delivery software requires one. Keep the unmasked original with the mask. A reviewer can then tell the difference between a part of the scene that was never visible and an area that the processing software chose to exclude.
+
+Where different images show different unusable regions, overlay their masks in the same image coordinates. The region common to all accepted images is the intersection of the individually usable regions. A conservative common crop can be helpful when the project needs uniform frames. It may discard useful pixels from individual views, so record whether the deliverable actually needs a shared rectangle or accepts a mask attached to each image. An irregular obstruction can take a small percentage of the whole frame and still affect a critical strip along one edge. Keep the shape and position of the rejected area with the percentage.
+
+Consider a fictional 6000 by 4000 pixel source. Assume a conservative shared crop excludes 180 pixels on the left, 120 on the right, 40 at the top and 200 at the bottom. The remaining width is 5700 pixels and the height is 3760 pixels. Multiplying the two gives 21,432,000 retained pixels from an original 24,000,000, or 89.3 percent of the frame. If a buyer's illustrative contract requires at least 92 percent to be usable in a shared crop, this example falls short by 2.7 percentage points. The numbers describe a hypothetical camera and acceptance rule.
+
+The original geometric center lies at horizontal coordinate 3000 and vertical coordinate 2000 when coordinates are measured from the outer edges of the image. The retained rectangle extends from 180 to 5880 horizontally and from 40 to 3800 vertically. Its center is therefore 3030 across and 1920 down. It has shifted 30 pixels right and 80 pixels up within the original frame. This shift comes from the unequal crop margins. Record the margins and the coordinate origin so a processor can place the remaining image correctly and avoid interpreting the crop center as a change in the pointing direction of the camera.
+
+## Compare the original with what the processing software receives
+
+Ask for the original file and a copy from each stage that changes the frame. Typical stages include in-camera correction, a desktop lens profile and export into the mapping project. Record the file dimensions and pixel coordinate origin at each stage. Put identifiable features near all four corners of the original and check where they appear after each change. If part of the edge disappears after applying a lens profile, the stage that introduced the crop is visible in the comparison. When the exporter scales a smaller crop back to the advertised dimensions, the file may have the original pixel count while covering less of the scene.
+
+Keep the original, the crop coordinates, and the applicable camera calibration together. For a crop with no resizing or geometric correction, subtract the left and top offsets from the corresponding original principal point coordinates. An image that was resized or warped requires the processing chain to account for that transform. Ask the processor to show that the calibration is applied in the correct coordinates for the exported files. A comparison of corner feature positions can expose a mistake even when the file names and dimensions agree.
+
+Carry the measured image region into a small, representative processing sample before accepting the package. Use the original frames and the same processing settings proposed for delivery. Review the image joins and edge regions to see whether the retained views still support coverage of the required features. A percentage of retained pixels alone gives no reliable ground footprint without the camera geometry and view of the scene. Check coverage against the area and the features that the customer will use. An edge that looks acceptable in a single frame can matter more when neighboring images also lose that part of the scene.
+
+## Accept the footprint and configuration together
+
+Agree on the acceptance terms before reviewing the supplier's samples. Specify which views and modes have to pass, the smallest usable region and what features must remain identifiable near its edges. State whether the delivered files may include a crop or mask and whether the downstream processor can preserve that information. A single area threshold is easy to check, but it can allow a loss in the most valuable part of the frame. An edge-specific requirement can be more appropriate when survey control or a feature of interest appears there.
+
+| Record item | Evidence to retain |
+| --- | --- |
+| Quoted configuration | Camera, lens, housing, filter, mounting parts and installation revision |
+| Comparable captures | Reference and installed original files with settings and view labels |
+| Visibility | Corner crops, usable-region mask, crop offsets and notes on rejected features |
+| Delivery files | Export settings, retained dimensions and traceable corner features |
+| Decision | Required views, limiting conditions, result, action owner and retest trigger |
+
+Treat a failed line according to where the problem appeared. If an edge is physically obscured in the installed original, ask for a revised installation and a new paired capture. If the feature is visible in the original but missing from the export, ask for the file transformation and test an agreed export. If the corners dim in both reference and installed views, assess whether the feature remains readable under the buyer's representative lighting before changing the mounting configuration. Keep the cause marked as provisional when the comparison has not isolated it. The revised evidence should address the affected views and any dependent export conditions.
+
+Finally, tie the accepted samples to the aircraft and payload that will be delivered. Record which changes require a repeat check. A different filter thickness, lens, housing, image mode or correction profile can alter the comparison, even if the camera body and aircraft are unchanged. Keep one baseline set of files with the purchase acceptance record and compare the delivered setup against it during receiving inspection. For the [UG32 aircraft and payload configuration discussion](https://store.uniteduav.com/products/ug32-fixed-wing-vtol-uav?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ug32_camera_footprint_20261111&utm_content=ug32_mapping_camera_footprint), send the supplier the required views, the smallest usable region and the expected file format. Request original and exported samples from the exact quoted installation so the footprint can be checked before acceptance.

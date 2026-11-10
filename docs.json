@@ -34,7 +34,8 @@
           "product-guides/uvh2-fixed-wing-vtol-acceptance-protocol",
           "product-guides/ua50-liquid-load-mass-balance-verification",
           "product-guides/ua30-dual-outlet-flow-balance-verification",
-          "product-guides/ua20-vehicle-loading-clearance"
+          "product-guides/ua20-vehicle-loading-clearance",
+          "product-guides/ug32-mapping-camera-footprint-acceptance"
         ]
       }
     ],
