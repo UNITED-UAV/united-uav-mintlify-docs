@@ -1,0 +1,81 @@
+---
+title: "Read Cargo Shock Records at UD50 Delivery Handover"
+description: "Turn a package acceleration trace into a receiving decision by checking coverage, pulse shape, sensor location and the item acceptance rule."
+sidebarTitle: "UD50 cargo shock records"
+---
+
+Published by UNITED UAV Official
+
+A case can arrive with an intact seal and a large peak in its shock logger. The receiving lead needs to determine which part of the case moved, whether the instrument captured the whole event, and what that event means for the item inside. The answer can change the next action from routine receipt to a targeted inspection or a hold for missing evidence. This guide helps buyers of the [UD50 cargo delivery aircraft](https://store.uniteduav.com/products/ud50-50kg-delivery-drone?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ud50_cargo_shock_20261114&utm_content=ud50_cargo_shock_receiving) write those decisions into a purchase and acceptance record for ordinary industrial goods.
+
+## Agree on the receiving decision before reading the trace
+
+Start with a shipment the receiver can identify. For example, an industrial spare assembly might need a check for displacement, damaged locating surfaces or loss of function. Ask the owner of the item which features matter and who can inspect them. A crushed outer corner could make the receiver look at the adjacent supports first. A logger exception may send a case for the same inspection even when its exterior is intact. Define where the item will wait, who releases it and what evidence closes the inspection.
+
+The UD50 product page gives a seller-listed payload capacity of 50 kg and shows a separately selected cargo equipment option. Record the equipment actually quoted, the package identification and how the case is carried in that configuration. The item acceptance criteria come from the item owner or an applicable qualification for the packed item. The aircraft payload listing gives no acceleration limit for that item. Make the receiver's decision rule part of the evidence request and confirm that the supplier can return the records needed to apply it.
+
+A practical receiving rule has an answer for a complete record, an exception and a missing record. A complete record within the agreed criteria can support routine receipt alongside the other required checks. An exceedance can require a particular inspection or functional test. A missing or unusable trace can require a hold while the supplier explains the gap. Defining these outcomes in advance helps two receiving shifts act consistently on the same evidence.
+
+<img src="https://store.uniteduav.com/cdn/shop/files/UD50-50kg-delivery-drone-uav.webp?v=1757946479" alt="UD50 catalog illustration showing the aircraft above a suspended parcel" />
+
+## Identify what each logger measures
+
+A logger attached to the outside shell records the motion of that part of the shell. If an item is supported inside by cushioning, the item can experience a different peak, direction or duration. An instrument attached to a representative test item can help assess that difference during qualification. A logger loose inside a compartment can strike the shell and record its own impact. For each channel, record the mounting location, orientation and attachment method, and keep a photograph. This evidence makes the measurement location clear when the file is opened at the receiving station.
+
+Give the sensor axes names that can be reconstructed from the case. If the receiver needs to compare two shipments, use the same convention and keep the positive directions on the drawing. Identify whether a reported peak comes from one signed axis, an absolute axis value or a computed resultant. A resultant made from three readings at the same instant is different from combining the highest value of each axis across the entire trip. In the latter case the three maxima may belong to separate events. Keep the time series or a labeled trace so reviewers can see which comparison was made.
+
+If two channels are used in a qualification trial, distinguish the outer case and the item or surrogate before comparing peaks. They may have different ranges, filter settings or time bases. A lower reading on the inside channel is meaningful only after accounting for those differences and confirming that both channels recorded the same event without clipping. Ask for the contents, cushioning and support locations used for the trial. A different item mass or packing arrangement can change how a case moves and how the load responds.
+
+## Check whether the device could have recorded the event
+
+Ask for the logger identification, measurement range, sampling rate, filter and trigger settings along with the export. The selected range must allow the expected waveform to be captured with enough resolution for the decision. If several successive samples hit exactly the instrument's maximum value, look for an overload indication or a flat top. A clipped record may establish that the channel reached its limit. It does not reveal the actual peak beyond that limit. Mark the peak as unresolved and use the receiving decision for unusable data.
+
+Use the sampling interval to check what a short event looks like in the saved file. A device sampling at 500 samples per second saves a value every 2 milliseconds under continuous recording. A hypothetical pulse lasting 4 milliseconds spans just two sample intervals, so its highest point can fall between saved values. Triggered modes may retain a different set of samples from a continuous recording. Confirm which mode was used and whether the instrument retained data before and after the trigger. Compare file settings with the device specifications before deciding that a displayed peak is enough to characterize the event.
+
+Review the observation window separately from sample quality. Confirm the time the logger was armed, the first and last valid records, and any periods excluded by a trigger holdoff, sleep state, memory limit or depleted battery. A trip summary with zero triggers is evidence of zero recorded triggers within the instrument's coverage. A test of the device in its intended mode helps establish what it would capture. For a receiving program that requires coverage from packing through acceptance, identify any uncovered portion explicitly in the report.
+
+## Compare pulses on a common basis
+
+Read the peak, duration and direction from the same event, using the stated measurement definition. A very short pulse and a longer pulse can have the same peak and different areas under the acceleration curve. The area of a signed acceleration pulse over time is the corresponding change in velocity along that axis, provided the signal represents the relevant acceleration and the baseline has been handled consistently. The ASTM public scope for mechanical shock fragility distinguishes critical velocity change from critical acceleration. A receiving logger reading is useful when the comparison preserves those quantities and the conditions under which they were established. [ASTM D3332 public scope](https://store.astm.org/standards/d3332)
+
+For an idealized triangular pulse, take half the product of its peak acceleration and its duration. In a fictional example, use a peak of 12 g, with 1 g taken as approximately 9.81 meters per second squared. A pulse lasting 4 milliseconds then has an area of about 0.24 meters per second. If a second pulse has the same peak and lasts 16 milliseconds, the area is about 0.94 meters per second. The values illustrate why a peak alone leaves part of the event unknown. Actual recorded waveforms can have several lobes, and the qualification method determines how to separate events and define their duration.
+
+Use the test basis from the buyer or item owner when translating a field trace into an action. A whole-case measurement can be compared with a whole-case criterion for the corresponding position and axis. An item-level limit calls for evidence about the item's response, which may come from a separate instrumented qualification with the same packing. Save the raw samples before any baseline correction, filtering or summary calculation. A second reviewer should be able to recreate the result from the file and settings without relying on a screenshot.
+
+## Place an event in the right handling interval
+
+Write the handling sequence at the level the receiver can observe. For an ordinary commercial spare part, that might mean case closure, loading completion, arrival, a transfer to a cart, and opening at the receiving station. Keep the logger's original time values and note the zone or clock reference used by each record. Two devices can show different times for the same movement. When a common observable event appears in both records, document the offset and the uncertainty it leaves before matching other events.
+
+If the largest event appears between two transfer observations, report that time interval and the possible stages it covers. A one-minute difference between written handover times can be larger than the clock correction or smaller than the recording uncertainty. Neither event order nor cause follows automatically from the largest displayed number. Include enough information for the receiver to separate an item condition decision from any later investigation of how the shock occurred.
+
+For example, suppose an event from an otherwise valid record falls within a six-second interval after allowing for clock alignment and sampling. The case transfer was logged to the nearest minute. If the event interval sits within the possible transfer window, keep the assignment open. Ask whether a receiving scan, cart record or another observation has a finer time basis. Record the source and precision of that observation before narrowing the event to a stage. When no better timestamp exists, the receiver can still use the measured event in the item's inspection decision and leave responsibility unresolved.
+
+Photograph the case and seal before opening when that is part of the buyer's process. Check the labels against the case and file identification. If the logger was moved between the trip and the download, keep that movement in the handling notes and distinguish it from events during the contracted observation window. A waveform associated with the wrong shipment or with an event after receipt cannot establish the condition that the buyer agreed to assess.
+
+<img src="https://store.uniteduav.com/cdn/shop/files/UD50-uav-delivery-drone-with-cargo-tube.webp?v=1757946462" alt="UD50 catalog view with its arms extended and two upright tubes on the frame" />
+
+## Treat the margin and the missing data as different problems
+
+Consider a fictional buyer rule for a case-mounted vertical channel. Assume the item owner has validated an 11 g investigation threshold for the same mounting point, axis, filter and class of pulse. Suppose the reading is 10.6 g and the stated measurement uncertainty for this setup is plus or minus 0.6 g. The resulting interval is 10.0 to 11.2 g, which crosses the investigation threshold. Under an example rule requiring the entire interval below the threshold, the evidence calls for the agreed follow-up inspection. The threshold and the decision rule are hypothetical and apply to no UD50 delivery.
+
+For a different event, suppose the vertical channel saturates. There is no numerical margin to apply to a peak that the logger failed to resolve. If the instrument documentation and raw samples establish that a relevant threshold was already exceeded at the recording limit, report that bounded result separately from the unknown peak. The recorded time and axis may still help the receiver locate the relevant handling interval. Keep the saturation flag with the trace and use the agreed procedure for any unresolved criterion. If the decision depends on pulse duration or velocity change too, report each value as measured, outside the validated scope, or unavailable.
+
+A record can also be complete and within the measurement criteria while the receiving inspection finds damage. Retain both observations. The receiver can withhold acceptance under the agreed condition rule, while the engineer checks whether the logger location or the qualification covered the observed damage mechanism. A repeat discrepancy is a reason to reconsider the evidence the next delivery requires. It gives the buyer a concrete question for the supplier instead of a dispute about the maximum displayed on the dashboard.
+
+## Request a sample receiving record with the quote
+
+Ask for a short sample package that the receiving lead can work through before the purchase. It should contain an original data export, a summary that identifies the event and channel behind each reported value, the photos and timing record, and an example of a completed receiving decision. Include a record with missing coverage or a saturated channel so the buyer can check that the supplier flags it in a way the receiving team can recognize. If the supplier provides software, ask which file format can be reviewed without that software and how an auditor can confirm that the summary comes from the retained original.
+
+| Record | What the receiving team needs |
+| --- | --- |
+| Shipment identity | Case and item IDs, configuration revision and receiving time |
+| Logger setup | Location, axis convention, range, sampling, filter and trigger settings |
+| Coverage | Observation interval, gaps and evidence used to align the clocks |
+| Event | Original samples, channel, peak and duration definition, and any clipping |
+| Decision | Applicable criteria, inspection outcome, action owner and release record |
+
+Use the sample record to check that the person receiving the case can explain each step. They should be able to find the event on the original trace, tie it to the correct case and channel, and point to the item or package criterion that supports the outcome. If the evidence chain breaks, identify the missing field or document and agree who supplies it. A small, complete example with one interpretable event is often more revealing than a long report that cannot be traced back to the original data.
+
+Keep the accepted sample together with the export settings and the decision worksheet. If the logger vendor changes the software, ask for the same example again and confirm how the new export represents time, units and overload. Keep the meaning of each decision field stable across the two files. That way, when the receiving desk sees a different peak after an update, it can tell whether the package record changed or whether the summary was calculated differently.
+
+When reviewing the [UD50 product and available configurations](https://store.uniteduav.com/products/ud50-50kg-delivery-drone?utm_source=mintlify&utm_medium=referral&utm_campaign=mintlify_ud50_cargo_shock_20261114&utm_content=ud50_cargo_shock_receiving), send the supplier the intended case and the receiving decision it must support. Request a configuration-specific sample showing the record from packing to handover, including the logger settings, an original trace, and the receiving disposition. Agree on which changes to the case, packing, instrument settings or contracted handling require another evidence review before the same decision rule is used again.
